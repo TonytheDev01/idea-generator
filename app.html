@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <!-- Header -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      Idea-Engne
+    </a>
+
+    <div class="header-actions">
+      <div class="user-badge">
+        <div class="user-avatar" id="userAvatar">?</div>
+        <span class="user-email" id="userEmail">Loading...</span>
+      </div>
+      <button class="btn-logout" id="logoutBtn">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Main Container -->
+<div class="main-container">
+  <!-- Generator Panel -->
+  <div class="generator-panel">
+    <div class="panel-header">
+      <div class="panel-icon">
+        <i class="fas fa-bolt"></i>
+      </div>
+      <div>
+        <h2>Generate Ideas</h2>
+      </div>
+    </div>
+
+    <form id="generatorForm">
+      <div class="form-group">
+        <label for="niche">
+          Your Niche
+          <span class="optional">*</span>
+        </label>
+        <textarea 
+          id="niche" 
+          class="form-input form-textarea" 
+          placeholder="e.g., Fitness coach for busy professionals who want to lose weight without going to the gym"
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="audience">
+          Target Audience
+          <span class="optional">(optional)</span>
+        </label>
+        <input 
+          type="text" 
+          id="audience" 
+          class="form-input" 
+          placeholder="e.g., 30-45 year old working moms"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>
+          Platforms
+          <span class="optional">(select 1-3)</span>
+        </label>
+        <div class="platform-tags">
+          <div class="platform-tag" data-platform="instagram">
+            <i class="fab fa-instagram"></i> Instagram
+          </div>
+          <div class="platform-tag" data-platform="linkedin">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </div>
+          <div class="platform-tag" data-platform="tiktok">
+            <i class="fab fa-tiktok"></i> TikTok
+          </div>
+          <div class="platform-tag" data-platform="twitter">
+            <i class="fab fa-twitter"></i> Twitter
+          </div>
+          <div class="platform-tag" data-platform="youtube">
+            <i class="fab fa-youtube"></i> YouTube
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="tone">
+          Brand Tone
+          <span class="optional">(optional)</span>
+        </label>
+        <input 
+          type="text" 
+          id="tone" 
+          class="form-input" 
+          placeholder="e.g., Motivational, educational, humorous"
+        >
+      </div>
+
+      <button type="submit" class="btn-generate" id="generateBtn">
+        <i class="fas fa-magic"></i>
+        Generate 10 Ideas
+      </button>
+    </form>
+
+    <div class="quota-info">
+      <strong><i class="fas fa-gift"></i> Free Tier</strong>
+      <p>You get 10 AI-generated content ideas for free. Upgrade to Creator plan for unlimited generations.</p>
+    </div>
+  </div>
+
+  <!-- Results Panel -->
+  <div class="results-panel">
+    <div class="results-header">
+      <div class="results-title">
+        <h2>Your Ideas</h2>
+        <span class="results-count" id="resultsCount">0 ideas</span>
+      </div>
+      <button class="btn-export" id="exportBtn" style="display: none;">
+        <i class="fas fa-download"></i>
+        Export
+      </button>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" id="emptyState">
+      <div class="empty-icon">
+        <i class="fas fa-lightbulb"></i>
+      </div>
+      <h3>Ready to spark some ideas?</h3>
+      <p>
+        Fill in your niche details on the left and hit "Generate" to get 10 AI-crafted content ideas tailored specifically for your audience.
+      </p>
+    </div>
+
+    <!-- Loading State -->
+    <div class="loading-state" id="loadingState">
+      <div class="spinner"></div>
+      <p>Generating your ideas...</p>
+      <small>This usually takes 10-15 seconds</small>
+    </div>
+
+    <!-- Error State -->
+    <div class="error-state" id="errorState">
+      <div class="error-icon">
+        <i class="fas fa-exclamation-triangle"></i>
+      </div>
+      <h3>Oops! Something went wrong</h3>
+      <p id="errorMessage">We couldn't generate ideas. Please try again.</p>
+      <button class="btn-retry" id="retryBtn">
+        <i class="fas fa-redo"></i> Try Again
+      </button>
+    </div>
+
+    <!-- Ideas List -->
+    <div class="ideas-list" id="ideasList">
+      <!-- Ideas will be inserted here dynamically -->
+    </div>
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div class="toast" id="toast">
+  <i class="fas fa-check-circle"></i>
+  <span id="toastMessage">Copied!</span>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
