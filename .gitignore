@@ -1,0 +1,18 @@
+# API Keys - NEVER commit these
+config.js
+.env
+.env.local
+
+# Dependencies
+node_modules/
+
+# Build files
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backups
+*.backup

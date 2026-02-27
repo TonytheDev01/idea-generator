@@ -4,7 +4,8 @@
 // GROQ API CONFIGURATION - DEBUG VERSION
 // ========================================
 
-const GROQ_API_KEY = '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';
+// const GROQ_API_KEY = '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';
+const GROQ_API_KEY = window.ENV?.GROQ_API_KEY || 'YOUR-GROQ-API-KEY-HERE';
 
 // Try this model first (fastest and most reliable)
 const AI_MODEL = 'llama-3.1-8b-instant';
