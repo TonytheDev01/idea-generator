@@ -81,6 +81,14 @@ button {
   max-width: var(--max-w);
   margin: 0 auto;
   padding: 0 2rem;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+section {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 .section-tag {

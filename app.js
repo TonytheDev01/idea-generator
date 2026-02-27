@@ -1,14 +1,18 @@
 'use strict';
 
 // ========================================
-// GROQ API CONFIGURATION
-// FAST, FREE, HIGH-QUALITY AI
+// GROQ API CONFIGURATION - DEBUG VERSION
 // ========================================
 
 const GROQ_API_KEY = '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';
 
-// Model to use (don't change unless you know what you're doing)
-const AI_MODEL = 'llama-3.1-70b-versatile';
+// Try this model first (fastest and most reliable)
+const AI_MODEL = 'llama-3.1-8b-instant';
+
+// Alternative models if above doesn't work:
+// 'llama-3.1-70b-versatile'
+// 'mixtral-8x7b-32768'
+// 'gemma-7b-it'
 
 
 // ========== AUTH CHECK ==========
@@ -85,18 +89,13 @@ form.addEventListener('submit', async (e) => {
 });
 
 
-// ========== AI GENERATION FUNCTION - GROQ ==========
+// ========== AI GENERATION FUNCTION - GROQ WITH DEBUG ==========
 async function generateIdeas({ niche, audience, tone, platforms }) {
-  // ✅ FIXED: Now checking against placeholder, not actual key
   if (GROQ_API_KEY === 'YOUR-GROQ-API-KEY-HERE') {
     errorState.classList.add('active');
     document.getElementById('errorMessage').innerHTML = 
       '⚠️ <strong>Groq not configured!</strong><br><br>' +
-      '1. Go to <a href="https://console.groq.com" target="_blank" style="color:#22D3EE">console.groq.com</a><br>' +
-      '2. Create free account (no credit card)<br>' +
-      '3. Get API key from "API Keys" section<br>' +
-      '4. Paste key in app.js (line 10)<br><br>' +
-      '<small>Key starts with: gsk_...</small>';
+      'Please add your API key in app.js (line 10)';
     return;
   }
 
@@ -134,6 +133,10 @@ Requirements:
 
 Return ONLY the JSON array, no other text, no markdown, no explanation.`;
 
+    console.log('🚀 Calling Groq API...');
+    console.log('Model:', AI_MODEL);
+    console.log('API Key (first 10 chars):', GROQ_API_KEY.substring(0, 10) + '...');
+
     // Call Groq API
     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
@@ -160,15 +163,26 @@ Return ONLY the JSON array, no other text, no markdown, no explanation.`;
       })
     });
 
+    console.log('📡 Response status:', response.status);
+
     if (!response.ok) {
-      const errorData = await response.json();
-      console.error('API Error:', errorData);
-      throw new Error(errorData.error?.message || `API error: ${response.status}`);
+      const errorText = await response.text();
+      console.error('❌ API Error Response:', errorText);
+      
+      let errorData;
+      try {
+        errorData = JSON.parse(errorText);
+      } catch (e) {
+        errorData = { error: { message: errorText } };
+      }
+      
+      console.error('❌ Parsed Error:', errorData);
+      throw new Error(errorData.error?.message || `API error ${response.status}: ${errorText}`);
     }
 
     const data = await response.json();
     
-    console.log('=== GROQ RESPONSE ===');
+    console.log('✅ GROQ RESPONSE RECEIVED');
     console.log('Full response:', data);
     
     // Extract the AI's message
@@ -211,6 +225,8 @@ Return ONLY the JSON array, no other text, no markdown, no explanation.`;
       format: idea.format || 'Post'
     }));
 
+    console.log('✅ Successfully generated', ideas.length, 'ideas');
+
     // Display ideas (take first 10)
     displayIdeas(ideas.slice(0, 10));
     
@@ -221,30 +237,50 @@ Return ONLY the JSON array, no other text, no markdown, no explanation.`;
     showToast('✨ 10 ideas generated successfully!');
 
   } catch (error) {
-    console.error('Generation error:', error);
+    console.error('❌ FULL ERROR DETAILS:');
+    console.error('Error message:', error.message);
+    console.error('Error object:', error);
     
     loadingState.classList.remove('active');
     errorState.classList.add('active');
     
-    // Provide helpful error messages
-    if (error.message.includes('API key') || error.message.includes('401') || error.message.includes('Invalid')) {
-      document.getElementById('errorMessage').innerHTML = 
-        '❌ <strong>Invalid API Key</strong><br><br>' +
-        'Your Groq API key is invalid or expired.<br><br>' +
-        '1. Go to <a href="https://console.groq.com" target="_blank" style="color:#22D3EE">console.groq.com</a><br>' +
-        '2. Click "API Keys"<br>' +
-        '3. Create a new key<br>' +
-        '4. Update it in app.js (line 10)';
-    } else if (error.message.includes('rate limit') || error.message.includes('429')) {
-      document.getElementById('errorMessage').textContent = 
-        'Rate limit exceeded (14,400 requests/day). This is very unlikely! Try again in a few minutes or create a new Groq account.';
-    } else if (error.message.includes('model')) {
-      document.getElementById('errorMessage').textContent = 
-        'Model error. Don\'t change the AI_MODEL in app.js - use the default: llama-3.1-70b-versatile';
+    // Show the ACTUAL error message for debugging
+    let errorMessage = '';
+    
+    if (error.message.includes('401')) {
+      errorMessage = `<strong>❌ Invalid API Key</strong><br><br>
+        Your API key is not working.<br><br>
+        <strong>To fix:</strong><br>
+        1. Go to <a href="https://console.groq.com/keys" target="_blank" style="color:#22D3EE">console.groq.com/keys</a><br>
+        2. Delete the old key<br>
+        3. Create a NEW key<br>
+        4. Replace the key in app.js line 10<br><br>
+        <strong>Current error:</strong> ${error.message}`;
+    } else if (error.message.includes('429')) {
+      errorMessage = `<strong>⏰ Rate Limit Exceeded</strong><br><br>
+        You've hit the daily limit (very unlikely!).<br><br>
+        Wait a few minutes or create a new Groq account.<br><br>
+        <strong>Error:</strong> ${error.message}`;
+    } else if (error.message.includes('404') || error.message.includes('model')) {
+      errorMessage = `<strong>🔧 Model Not Available</strong><br><br>
+        The model '${AI_MODEL}' might not be available.<br><br>
+        <strong>Try this:</strong><br>
+        1. Open app.js<br>
+        2. Change line 11 to:<br>
+        <code>const AI_MODEL = 'llama-3.1-8b-instant';</code><br><br>
+        <strong>Current error:</strong> ${error.message}`;
     } else {
-      document.getElementById('errorMessage').textContent = 
-        `${error.message} Check browser console (F12) for details.`;
+      errorMessage = `<strong>❌ Error Details</strong><br><br>
+        ${error.message}<br><br>
+        <strong>Check browser console (F12) for full details</strong><br><br>
+        <strong>Quick fixes to try:</strong><br>
+        1. Verify your API key at <a href="https://console.groq.com/keys" target="_blank" style="color:#22D3EE">console.groq.com/keys</a><br>
+        2. Try changing the model in app.js line 11 to: <code>llama-3.1-8b-instant</code><br>
+        3. Check your internet connection<br>
+        4. Try refreshing the page`;
     }
+    
+    document.getElementById('errorMessage').innerHTML = errorMessage;
     
   } finally {
     generateBtn.disabled = false;
@@ -408,7 +444,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // ========== CONSOLE BRANDING ==========
-console.log('%c⚡ Idea-Engne Dashboard', 'font-size:22px;font-weight:900;color:#4f39f6;');
-console.log('%cPowered by Groq (Fast & Free)', 'font-size:14px;color:#22D3EE;font-weight:600;');
-console.log('%cBuilt by Anthony Michael (TonyDev)', 'font-size:13px;color:#666;');
-console.log('%c14,400 free requests per day! 🚀', 'font-size:12px;color:#04cc6f;font-weight:bold;');
+console.log('%c⚡ Idea-Engne Dashboard - DEBUG MODE', 'font-size:22px;font-weight:900;color:#4f39f6;');
+console.log('%cPowered by Groq', 'font-size:14px;color:#22D3EE;font-weight:600;');
+console.log('%c🔍 Check console logs for detailed error info', 'font-size:12px;color:#f59e0b;font-weight:bold;');
