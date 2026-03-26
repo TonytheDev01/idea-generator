@@ -1,54 +1,221 @@
 'use strict';
 
-// ========== HAMBURGER MENU ==========
+// ========================================
+// IDEA-ENGNE - LANDING PAGE SCRIPTS
+// Built by Anthony Michael (TonyDev)
+// ========================================
+
+// ========== MOBILE SIDEBAR MENU (ENHANCED) ==========
 document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.querySelector('.hamburger');
   const mobileMenu = document.querySelector('.mobile-menu');
   const body = document.body;
-
+  
+  // Guard: only proceed if mobile menu elements exist on this page
+  if (!hamburger || !mobileMenu) {
+    return; // This page doesn't have mobile menu structure
+  }
+  
+  // Create backdrop if it doesn't exist
+  let backdrop = document.querySelector('.mobile-menu-backdrop');
+  if (!backdrop) {
+    backdrop = document.createElement('div');
+    backdrop.className = 'mobile-menu-backdrop';
+    document.body.appendChild(backdrop);
+  }
+  
+  // Create close button in sidebar if it doesn't exist
+  let closeBtn = mobileMenu.querySelector('.mobile-menu-close');
+  if (!closeBtn) {
+    closeBtn = document.createElement('button');
+    closeBtn.className = 'mobile-menu-close';
+    closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+    closeBtn.setAttribute('aria-label', 'Close menu');
+    mobileMenu.insertBefore(closeBtn, mobileMenu.firstChild);
+  }
+  
+  // Open menu
+  function openMenu() {
+    hamburger.classList.add('active');
+    mobileMenu.classList.add('active');
+    backdrop.classList.add('active');
+    body.style.overflow = 'hidden';
+  }
+  
+  // Close menu
+  function closeMenu() {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('active');
+    backdrop.classList.remove('active');
+    body.style.overflow = '';
+  }
+  
   if (hamburger && mobileMenu) {
-    // Toggle menu on hamburger click
+    // Hamburger click
     hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      mobileMenu.classList.toggle('active');
-      
-      // Prevent scrolling when menu is open
-      body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-      
-      // Update aria-expanded for accessibility
-      const isExpanded = mobileMenu.classList.contains('active');
-      hamburger.setAttribute('aria-expanded', isExpanded);
+      if (mobileMenu.classList.contains('active')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
     });
-
-    // Close menu when clicking a link
+    
+    // Close button click
+    closeBtn.addEventListener('click', closeMenu);
+    
+    // Backdrop click
+    backdrop.addEventListener('click', closeMenu);
+    
+    // Close when clicking on links
     const mobileLinks = mobileMenu.querySelectorAll('a');
     mobileLinks.forEach(link => {
       link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        body.style.overflow = '';
-        hamburger.setAttribute('aria-expanded', 'false');
+        closeMenu();
+        
+        // Add active class to clicked link
+        mobileLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
       });
     });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
-        hamburger.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        body.style.overflow = '';
-        hamburger.setAttribute('aria-expanded', 'false');
+    
+    // Add icons to nav links if they don't have them
+    const navIcons = {
+      'how-it-works': 'fa-map-signs',
+      'features': 'fa-star',
+      'testimonials': 'fa-comments',
+      'pricing': 'fa-tags',
+      'faq': 'fa-question-circle'
+    };
+    
+    mobileLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        const section = href.substring(1);
+        const iconClass = navIcons[section];
+        if (iconClass && !link.querySelector('i')) {
+          const icon = document.createElement('i');
+          icon.className = `fas ${iconClass}`;
+          link.insertBefore(icon, link.firstChild);
+        }
       }
     });
   }
+  
+  // Close menu on ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) {
+      closeMenu();
+    }
+  });
+  
+  // Highlight active section on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.mobile-nav-links a[href^="#"]');
+  
+  function highlightActiveSection() {
+    const scrollY = window.pageYOffset;
+    
+    sections.forEach(section => {
+      const sectionHeight = section.offsetHeight;
+      const sectionTop = section.offsetTop - 100;
+      const sectionId = section.getAttribute('id');
+      
+      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${sectionId}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }
+  
+  window.addEventListener('scroll', highlightActiveSection, { passive: true });
 });
+
+// ========== CHECK USER LOGIN STATUS ==========
+document.addEventListener('DOMContentLoaded', () => {
+  const loggedInUser = localStorage.getItem('ideaEngneUser');
+  const storedData = localStorage.getItem('ideaEngneUserData');
+  let user = null;
+  
+  if (storedData) {
+    try {
+      user = JSON.parse(storedData);
+    } catch (error) {
+      console.warn('Corrupted user data in localStorage', error);
+    }
+  }
+  
+  if (loggedInUser && user) {
+    
+    // Update CTA buttons to "Go to Dashboard"
+    const ctaTriggers = document.querySelectorAll('.cta-trigger');
+    ctaTriggers.forEach(btn => {
+      if (btn.textContent.includes('Start') || btn.textContent.includes('Free')) {
+        btn.innerHTML = '<i class="fas fa-tachometer-alt"></i> Go to Dashboard';
+        btn.onclick = (e) => {
+          e.preventDefault();
+          window.location.href = 'app.html';
+        };
+      }
+    });
+    
+    // Show user info in mobile sidebar
+    const mobileMenu = document.querySelector('.mobile-menu');
+    if (mobileMenu && !mobileMenu.querySelector('.mobile-user-info')) {
+      const userInfo = document.createElement('div');
+      userInfo.className = 'mobile-user-info show';
+      
+      const initials = user.name
+        ? user.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()
+        : loggedInUser.charAt(0).toUpperCase() + loggedInUser.split('@')[0].slice(-1).toUpperCase();
+      
+      userInfo.innerHTML = `
+        <div class="mobile-user-avatar">${initials}</div>
+        <div class="mobile-user-text">
+          <strong>${user.name || 'User'}</strong>
+          <span>${user.subscription === 'free' ? `${user.freeIdeasRemaining || 0} free ideas left` : 'Pro member'}</span>
+        </div>
+      `;
+      
+      mobileMenu.insertBefore(userInfo, mobileMenu.firstChild);
+    }
+    
+    // Update mobile CTA to show dashboard and logout
+    const mobileCTA = document.querySelector('.mobile-cta');
+    if (mobileCTA) {
+      mobileCTA.innerHTML = `
+        <button class="btn-primary" onclick="window.location.href='app.html'">
+          <i class="fas fa-tachometer-alt"></i> Dashboard
+        </button>
+        <button class="btn-outline" onclick="handleLogout()">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      `;
+    }
+  }
+});
+
+// Logout handler
+function handleLogout() {
+  if (confirm('Are you sure you want to logout?')) {
+    localStorage.removeItem('ideaEngneUser');
+    localStorage.removeItem('ideaEngneUserData');
+    localStorage.removeItem('ideaEngneRememberMe');
+    localStorage.removeItem('ideaEngneLastIdeas');
+    window.location.reload();
+  }
+}
 
 // ========== HEADER SCROLL EFFECT ==========
 const header = document.getElementById('site-header');
-window.addEventListener('scroll', () => {
-  header.classList.toggle('scrolled', window.scrollY > 10);
-}, { passive: true });
-
+if (header) {
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+}
 
 // ========== SCROLL FADE-IN OBSERVER ==========
 const fadeObserver = new IntersectionObserver((entries) => {
@@ -65,7 +232,6 @@ document.addEventListener('DOMContentLoaded', () => {
     '.fade-in, .fade-in-left, .fade-in-right'
   ).forEach(el => fadeObserver.observe(el));
 });
-
 
 // ========== TYPING EFFECT ==========
 class TypingEffect {
@@ -110,14 +276,18 @@ class TypingEffect {
 document.addEventListener('DOMContentLoaded', () => {
   const typingEl = document.getElementById('typing-hero');
   if (typingEl) {
-    const words = ['Creators', 'Coaches', 'Founders', 'Brands', 'Bloggers', 'Tech bro', 'Tech sis'];
+    const words = ['Creators', 'Coaches', 'Founders', 'Brands', 'Bloggers', 'Marketers'];
     new TypingEffect(typingEl, words).start();
   }
 });
 
-
 // ========== ANIMATED COUNTER ==========
 function animateCounter(el, target, duration = 2000) {
+  // Guard against invalid inputs
+  if (!el || typeof target !== 'number' || Number.isNaN(target) || target < 0) {
+    return;
+  }
+  
   const isLarge = target >= 10000;
   const increment = target / (duration / 16);
   let current = 0;
@@ -148,7 +318,6 @@ const counterObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
 
-
 // ========== FAQ ACCORDION ==========
 document.querySelectorAll('.faq-question').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -163,8 +332,7 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   });
 });
 
-
-// ========== CTA MODAL (UPDATED WITH APP REDIRECT) ==========
+// ========== CTA MODAL (UPDATED) ==========
 class CTAModal {
   constructor() {
     this.modal = document.getElementById('ctaModal');
@@ -175,99 +343,58 @@ class CTAModal {
   }
 
   init() {
+    // Check if user is already logged in
+    const loggedInUser = localStorage.getItem('ideaEngneUser');
+    
     // Open triggers
     document.querySelectorAll('.cta-trigger').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
-        this.open();
+        
+        // If user is logged in, go to dashboard
+        if (loggedInUser) {
+          window.location.href = 'app.html';
+        } else {
+          // Otherwise, go to signup
+          window.location.href = 'signup.html';
+        }
       });
     });
 
-    // CTA section email input → open modal with pre-filled email
+    // CTA section email input → redirect to signup with pre-filled email
     const ctaEmailMain = document.getElementById('ctaEmailMain');
     if (ctaEmailMain) {
       ctaEmailMain.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
-          document.getElementById('modalEmail').value = ctaEmailMain.value;
-          this.open();
+          const email = ctaEmailMain.value.trim();
+          localStorage.setItem('ideaEngnePrefilledEmail', email);
+          window.location.href = 'signup.html';
         }
       });
     }
 
-    // Close triggers
-    this.modal.querySelector('.modal-close').addEventListener('click', () => this.close());
-    this.modal.querySelector('.cta-modal-overlay').addEventListener('click', () => this.close());
+    // Close triggers (if modal exists)
+    if (this.modal) {
+      this.modal.querySelector('.modal-close')?.addEventListener('click', () => this.close());
+      this.modal.querySelector('.cta-modal-overlay')?.addEventListener('click', () => this.close());
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && this.modal.classList.contains('active')) this.close();
-    });
-
-    // Form submit
-    this.form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      this.submit();
-    });
-
-    // Got it button
-    document.getElementById('modalGotItBtn').addEventListener('click', () => this.close());
-  }
-
-  open() {
-    this.modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    setTimeout(() => document.getElementById('modalEmail').focus(), 150);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && this.modal.classList.contains('active')) this.close();
+      });
+    }
   }
 
   close() {
-    this.modal.classList.remove('active');
-    document.body.style.overflow = '';
-    setTimeout(() => {
-      this.form.reset();
-      this.form.style.display = 'flex';
-      this.successEl.style.display = 'none';
-      this.submitBtn.textContent = 'Get My Free Ideas →';
-      this.submitBtn.disabled = false;
-      document.getElementById('emailError').style.display = 'none';
-    }, 300);
-  }
-
-  submit() {
-    const email = document.getElementById('modalEmail').value.trim();
-    const niche = document.getElementById('modalNiche').value.trim();
-    const errorEl = document.getElementById('emailError');
-
-    if (!this.validateEmail(email)) {
-      errorEl.textContent = 'Please enter a valid email address.';
-      errorEl.style.display = 'block';
-      return;
+    if (this.modal) {
+      this.modal.classList.remove('active');
+      document.body.style.overflow = '';
     }
-
-    errorEl.style.display = 'none';
-    this.submitBtn.textContent = 'Processing...';
-    this.submitBtn.disabled = true;
-
-    // Save user data and redirect to app
-    setTimeout(() => {
-      // Save to localStorage
-      localStorage.setItem('ideaEngneUser', email);
-      if (niche) {
-        localStorage.setItem('ideaEngneNiche', niche);
-      }
-      
-      console.log('🚀 New signup:', { email, niche });
-      
-      // Redirect to app dashboard
-      window.location.href = 'app.html';
-    }, 1400);
-  }
-
-  validateEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => new CTAModal());
-
+document.addEventListener('DOMContentLoaded', () => {
+  new CTAModal();
+});
 
 // ========== SMOOTH SCROLL (NAV) ==========
 document.querySelectorAll('a[href^="#"]').forEach(link => {
@@ -280,27 +407,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
-
-// ========== CHECK IF USER IS ALREADY LOGGED IN ==========
-document.addEventListener('DOMContentLoaded', () => {
-  const loggedInUser = localStorage.getItem('ideaEngneUser');
-  if (loggedInUser) {
-    // User is already logged in - update CTA buttons
-    const ctaTriggers = document.querySelectorAll('.cta-trigger');
-    ctaTriggers.forEach(btn => {
-      if (btn.textContent.includes('Start') || btn.textContent.includes('Free')) {
-        btn.textContent = '→ Go to Dashboard';
-        btn.onclick = (e) => {
-          e.preventDefault();
-          window.location.href = 'app.html';
-        };
-      }
-    });
-  }
-});
-
-
 // ========== CONSOLE BRANDING ==========
 console.log('%c⚡ Idea-Engne', 'font-size:22px;font-weight:900;color:#4f39f6;');
-console.log('%cBuilt from scratch by Anthony Michael (TonyDev)', 'font-size:14px;color:#22D3EE;font-weight:600;');
-console.log('%c→ GitHub: github.com/TonytheDev01 | LinkedIn: linkedin.com/in/anthony-chuksmichael/', 'font-size:13px;color:#666;');
+console.log('%cBuilt by Anthony Michael (TonyDev)', 'font-size:14px;color:#22D3EE;font-weight:600;');
+console.log('%c→ GitHub: github.com/TonytheDev01', 'font-size:13px;color:#666;');

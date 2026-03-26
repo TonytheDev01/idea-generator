@@ -1,10 +1,7 @@
-/* ============================================
-   IDEA-ENGNE - DASHBOARD STYLES
+   /* IDEA-ENGNE - DASHBOARD STYLES
    Mobile-First Responsive Design
-   Built by Anthony Michael (TonyDev)
-============================================ */
+   Built by Anthony Michael (TonyDev) */
 
-/* ========== CSS VARIABLES ========== */
 :root {
   --primary: #4f39f6;
   --secondary: #6553eb;
@@ -21,7 +18,6 @@
   --text-light: #8a87a5;
   --success: #04cc6f;
   --warning: #f59e0b;
-
   --radius-sm: 0.6rem;
   --radius-md: 1.2rem;
   --radius-lg: 2rem;
@@ -33,8 +29,9 @@
   --font-body: 'Source Sans 3', sans-serif;
 }
 
-/* ========== RESET ========== */
-*, *::before, *::after {
+*,
+*::before, 
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -53,13 +50,10 @@ body {
   min-height: 100vh;
 }
 
-/* ============================================
-   HEADER - MOBILE FIRST
-============================================ */
 header {
   background: var(--white);
   border-bottom: 2px solid var(--accent);
-  padding: 1.6rem 2rem;
+  padding: 2rem 2rem;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -104,9 +98,10 @@ header {
 
 .header-actions {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1.2rem;
+  gap: 2rem;
   width: 100%;
 }
 
@@ -130,8 +125,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 600;
   color: var(--white);
   flex-shrink: 0;
 }
@@ -165,9 +160,7 @@ header {
   transform: translateY(-2px);
 }
 
-/* ============================================
-   MAIN CONTAINER - MOBILE FIRST
-============================================ */
+   /* MAIN CONTAINER - MOBILE FIRST */
 .main-container {
   max-width: 140rem;
   margin: 0 auto;
@@ -177,9 +170,6 @@ header {
   gap: 3rem;
 }
 
-/* ============================================
-   GENERATOR PANEL - MOBILE FIRST
-============================================ */
 .generator-panel {
   background: var(--white);
   border-radius: var(--radius-lg);
@@ -190,13 +180,13 @@ header {
 .panel-header {
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1.5rem;
   margin-bottom: 2.5rem;
 }
 
 .panel-icon {
-  width: 4.5rem;
-  height: 4.5rem;
+  width: 4rem;
+  height: 4rem;
   background: var(--light-bg);
   border-radius: var(--radius-md);
   display: flex;
@@ -209,7 +199,7 @@ header {
 .panel-header h2 {
   font-family: var(--font-head);
   font-size: 2.2rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text-dark);
 }
 
@@ -249,7 +239,7 @@ header {
 }
 
 .form-textarea {
-  min-height: 10rem;
+  min-height: 8rem;
   resize: vertical;
 }
 
@@ -288,14 +278,14 @@ header {
 
 .btn-generate {
   width: 100%;
-  padding: 1.6rem;
+  padding: 1.5rem;
   background: var(--accent);
   color: var(--white);
   border: none;
   border-radius: var(--radius-md);
   font-family: var(--font-head);
   font-size: 1.7rem;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.25s ease;
   display: flex;
@@ -338,9 +328,7 @@ header {
   line-height: 1.6;
 }
 
-/* ============================================
-   RESULTS PANEL - MOBILE FIRST
-============================================ */
+   /* RESULTS PANEL - MOBILE FIRST */
 .results-panel {
   background: var(--white);
   border-radius: var(--radius-lg);
@@ -367,7 +355,7 @@ header {
 .results-title h2 {
   font-family: var(--font-head);
   font-size: 2.2rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text-dark);
 }
 
@@ -377,7 +365,7 @@ header {
   padding: 0.5rem 1.2rem;
   border-radius: 10rem;
   font-size: 1.4rem;
-  font-weight: 700;
+  font-weight: 600;
   border: 2px solid var(--accent);
 }
 
@@ -405,16 +393,14 @@ header {
   transform: translateY(-2px);
 }
 
-/* ============================================
-   EMPTY STATE
-============================================ */
+   /* EMPTY STATE */
 .empty-state {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 6rem 2rem;
+  padding: 5rem 2rem;
   min-height: 40rem;
 }
 
@@ -447,15 +433,12 @@ header {
   line-height: 1.8;
 }
 
-/* ============================================
-   LOADING STATE
-============================================ */
 .loading-state {
   display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 6rem 2rem;
+  padding: 5rem 2rem;
   min-height: 40rem;
 }
 
@@ -464,8 +447,8 @@ header {
 }
 
 .spinner {
-  width: 6.5rem;
-  height: 6.5rem;
+  width: 6rem;
+  height: 6rem;
   border: 5px solid var(--light-bg);
   border-top-color: var(--accent);
   border-radius: 50%;
@@ -489,15 +472,12 @@ header {
   color: var(--text-light);
 }
 
-/* ============================================
-   ERROR STATE
-============================================ */
 .error-state {
   display: none;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 3rem 2rem;
 }
 
 .error-state.active {
@@ -505,8 +485,8 @@ header {
 }
 
 .error-icon {
-  width: 9rem;
-  height: 9rem;
+  width: 8rem;
+  height: 8rem;
   background: #fee2e2;
   border-radius: 50%;
   display: flex;
@@ -521,7 +501,7 @@ header {
 .error-state h3 {
   font-family: var(--font-head);
   font-size: 2.2rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text-dark);
   margin-bottom: 1rem;
 }
@@ -531,14 +511,14 @@ header {
   color: var(--text-mid);
   margin-bottom: 2.5rem;
   max-width: 50rem;
-  line-height: 1.75;
+  line-height: 1.6;
 }
 
 .btn-retry {
   background: var(--primary);
   color: var(--white);
   border: none;
-  padding: 1.3rem 2.8rem;
+  padding: 1.3rem 2.5rem;
   border-radius: var(--radius-md);
   font-size: 1.6rem;
   font-weight: 600;
@@ -555,9 +535,6 @@ header {
   transform: translateY(-2px);
 }
 
-/* ============================================
-   IDEAS LIST
-============================================ */
 .ideas-list {
   display: none;
   flex-direction: column;
@@ -614,8 +591,8 @@ header {
 }
 
 .idea-number {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 3rem;
+  height: 3rem;
   background: var(--accent);
   color: var(--white);
   border-radius: 1rem;
@@ -623,8 +600,8 @@ header {
   align-items: center;
   justify-content: center;
   font-family: var(--font-head);
-  font-size: 1.6rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 600;
   flex-shrink: 0;
 }
 
@@ -633,10 +610,10 @@ header {
 }
 
 .idea-text {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   color: var(--text-dark);
   font-weight: 600;
-  line-height: 1.6;
+  line-height: 1.5;
   margin-bottom: 1.5rem;
 }
 
@@ -711,9 +688,6 @@ header {
   border-color: var(--success);
 }
 
-/* ============================================
-   TOAST NOTIFICATION
-============================================ */
 .toast {
   position: fixed;
   bottom: 3rem;
@@ -746,22 +720,21 @@ header {
   flex-shrink: 0;
 }
 
-/* ============================================
-   TABLET (768px+)
-============================================ */
+   /* TABLET (768px+) */
 @media (min-width: 768px) {
   header {
     padding: 1.8rem 3rem;
   }
 
   .header-inner {
+    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
   }
 
   .brand {
-    font-size: 2.6rem;
+    font-size: 2.5rem;
   }
 
   .brand-icon {
@@ -778,20 +751,20 @@ header {
   }
 
   .user-email {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 
   .btn-logout {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 
   .main-container {
-    padding: 4rem 3rem 8rem;
+    padding: 4rem 3rem 6rem;
   }
 
   .generator-panel,
   .results-panel {
-    padding: 3rem;
+    padding: 4rem;
   }
 
   .panel-header h2,
@@ -800,9 +773,9 @@ header {
   }
 
   .panel-icon {
-    width: 5rem;
-    height: 5rem;
-    font-size: 2.4rem;
+    width: 4rem;
+    height: 4rem;
+    font-size: 2.3rem;
   }
 
   .empty-state,
@@ -812,9 +785,9 @@ header {
   }
 
   .empty-icon {
-    width: 12rem;
-    height: 12rem;
-    font-size: 5rem;
+    width: 11rem;
+    height: 11rem;
+    font-size: 4rem;
   }
 
   .empty-state h3 {
@@ -826,12 +799,12 @@ header {
   }
 
   .loading-state p {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
   .spinner {
-    width: 7rem;
-    height: 7rem;
+    width: 6rem;
+    height: 6rem;
   }
 
   .error-icon {
@@ -841,7 +814,7 @@ header {
   }
 
   .error-state h3 {
-    font-size: 2.4rem;
+    font-size: 2.2rem;
   }
 
   .error-state p {
@@ -892,16 +865,14 @@ header {
   }
 }
 
-/* ============================================
-   DESKTOP (1024px+)
-============================================ */
+   /* DESKTOP (1024px+) */
 @media (min-width: 1024px) {
   header {
-    padding: 1.8rem 4rem;
+    padding: 2rem 4rem;
   }
 
   .brand {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
   }
 
   .main-container {
@@ -940,9 +911,7 @@ header {
   }
 }
 
-/* ============================================
-   LARGE DESKTOP (1280px+)
-============================================ */
+   /* LARGE DESKTOP (1280px+) */
 @media (min-width: 1280px) {
   .main-container {
     gap: 4rem;
@@ -950,5 +919,311 @@ header {
 
   .generator-panel {
     flex: 0 0 46rem;
+  }
+}
+
+
+   /* ENHANCED IDEA CARDS */
+.idea-hook {
+  font-size: 1.4rem;
+  color: var(--primary);
+  font-style: italic;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  border-left: 3px solid var(--accent);
+}
+
+.idea-hook i {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+  opacity: 0.6;
+}
+
+.idea-cta {
+  font-size: 1.4rem;
+  color: var(--text-mid);
+  margin-top: 1rem;
+  padding: 0.8rem 1.2rem;
+  background: var(--light-bg);
+  border-radius: 0.6rem;
+  border-left: 3px solid var(--success);
+}
+
+.idea-cta strong {
+  color: var(--success);
+}
+
+.btn-icon.saved {
+  background: var(--success);
+  color: var(--white);
+  border-color: var(--success);
+}
+
+.btn-icon.saved i {
+  animation: savedPulse 0.3s ease;
+}
+
+@keyframes savedPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+   /* UPGRADE MODAL */
+
+.upgrade-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+}
+
+.upgrade-modal.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.upgrade-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+}
+
+.upgrade-content {
+  position: relative;
+  z-index: 1;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2.5rem;
+  max-width: 50rem;
+  width: 100%;
+  text-align: center;
+  transform: scale(0.9) translateY(-20px);
+  transition: transform 0.4s ease;
+  box-shadow: var(--shadow-lg);
+}
+
+.upgrade-modal.show .upgrade-content {
+  transform: scale(1) translateY(0);
+}
+
+.upgrade-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: var(--off-white);
+  border: none;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-mid);
+  transition: all 0.2s ease;
+  font-size: 1.6rem;
+}
+
+.upgrade-close:hover {
+  background: var(--error);
+  color: var(--white);
+  transform: rotate(90deg);
+}
+
+.upgrade-icon {
+  width: 8rem;
+  height: 8rem;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+}
+
+.upgrade-icon i {
+  font-size: 4rem;
+  color: #f59e0b;
+}
+
+.upgrade-content h3 {
+  font-family: var(--font-head);
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.upgrade-content > p {
+  font-size: 1.6rem;
+  color: var(--text-mid);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.upgrade-benefits {
+  background: var(--off-white);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  text-align: left;
+}
+
+.upgrade-benefit {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.upgrade-benefit i {
+  font-size: 1.8rem;
+  color: var(--primary);
+  flex-shrink: 0;
+  width: 2.5rem;
+}
+
+.upgrade-pricing {
+  background: linear-gradient(135deg, var(--light-bg) 0%, var(--off-white) 100%);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.price-tag {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  font-family: var(--font-head);
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.period {
+  font-size: 1.6rem;
+  color: var(--text-mid);
+  font-weight: 600;
+}
+
+.price-note {
+  font-size: 1.3rem;
+  color: var(--text-light);
+}
+
+.btn-upgrade {
+  width: 100%;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-head);
+  font-size: 1.6rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 1.5rem;
+}
+
+.btn-upgrade:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.upgrade-later {
+  display: inline-block;
+  font-size: 1.4rem;
+  color: var(--text-light);
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.upgrade-later:hover {
+  color: var(--text-mid);
+  background: var(--off-white);
+}
+
+   /* TABLET RESPONSIVE FIXES (768px+) */
+
+@media (min-width: 768px) {
+  .header-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .header-actions {
+    flex-direction: row;
+    width: auto;
+    justify-content: flex-end;
+  }
+
+  .user-badge {
+    flex: 0 0 auto;
+    min-width: auto;
+  }
+
+  .btn-logout {
+    white-space: nowrap;
+  }
+
+  .upgrade-content {
+    padding: 4rem 4rem;
+  }
+
+  .upgrade-icon {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .upgrade-icon i {
+    font-size: 5rem;
+  }
+
+  .upgrade-content h3 {
+    font-size: 2.8rem;
+  }
+}
+
+   /* DESKTOP FIXES (1024px+) */
+
+@media (min-width: 1024px) {
+  .upgrade-benefits {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
 }
