@@ -1,0 +1,58 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Create config.js with API key
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: |
+          cat > config.js << 'EOF'
+          // config.js - Loads environment variables safely
+          // SECURITY: API key is injected via GitHub Actions from Secrets
+          
+          // Get API key - injected from GitHub Secrets at build time
+          const GROQ_API_KEY = '${GROQ_API_KEY}';
+          
+          if (!GROQ_API_KEY || GROQ_API_KEY.includes('YOUR-') || GROQ_API_KEY === '') {
+            console.warn('⚠️ WARNING: GROQ_API_KEY is not configured.');
+            console.warn('Please add GROQ_API_KEY to GitHub Secrets');
+          }
+          
+          window.ENV = {
+            GROQ_API_KEY: GROQ_API_KEY,
+            NODE_ENV: 'production'
+          };
+          EOF
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2

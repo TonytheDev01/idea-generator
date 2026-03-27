@@ -1,5 +1,4 @@
 # API Keys - NEVER commit these
-config.js
 .env
 .env.local
 
