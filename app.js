@@ -235,12 +235,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // AI GENERATION FUNCTION - ENHANCED
 async function generateIdeas({ niche, audience, tone, platforms }) {
+  // Try to get API key from window.ENV (set by config.js)
   const GROQ_API_KEY = window.ENV?.GROQ_API_KEY;
+  
+  // Debug logging
+  console.log('🔍 DEBUG: Checking API Key...');
+  console.log('window.ENV exists?', !!window.ENV);
+  console.log('window.ENV.GROQ_API_KEY exists?', !!GROQ_API_KEY);
+  if (GROQ_API_KEY) {
+    console.log('API Key (masked):', GROQ_API_KEY.substring(0, 10) + '...');
+  }
+  
   if (!GROQ_API_KEY || GROQ_API_KEY === 'YOUR-GROQ-API-KEY-HERE') {
     errorState.classList.add('active');
     document.getElementById('errorMessage').innerHTML = 
-      '⚠️ <strong>Groq not configured!</strong><br><br>' +
-      'Please add your API key in config.js';
+      '⚠️ <strong>Groq API Key Not Configured!</strong><br><br>' +
+      'API Key is missing or invalid. The browser console shows:<br>' +
+      '<code>window.ENV = ' + JSON.stringify(window.ENV || 'undefined') + '</code><br><br>' +
+      '<strong>Solution:</strong><br>' +
+      '1. Hard refresh the page (Ctrl+Shift+R)<br>' +
+      '2. Check Developer Console (F12) for errors<br>' +
+      '3. If still failing, you may need a fresh API key from groq.com';
     return;
   }
 
