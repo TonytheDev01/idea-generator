@@ -9,1043 +9,1175 @@
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <title>Idea-Engne | AI Social Media Idea Generator</title>
-
-  <!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <!-- Skip Link -->
-<a href="#hero" class="skip-link">Skip to main content</a>
 
-<!--  HEADER -->
-<header id="site-header">
-  <div class="header-inner">
-    <!-- Brand Logo -->
-    <a href="#hero" class="brand">
-      <div class="brand-icon">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-        </svg>
+  <a href="#hero" class="skip-link">Skip to main content</a>
+
+       <!-- HEADER -->
+  <header id="site-header">
+    <div class="header-inner">
+
+      <!-- Brand -->
+      <a href="#hero" class="brand" aria-label="Idea-Engne home">
+        <div class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+                  stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        Idea-Engne
+      </a>
+
+      <!-- Desktop Nav (hidden on mobile via CSS) -->
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="#how-it-works">How it works</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-cta">
+        <button class="btn-outline cta-trigger" type="button">Login</button>
+        <button class="btn-primary cta-trigger" type="button">Start Free →</button>
       </div>
-      Idea-Engne
-    </a>
 
-    <!-- Desktop Navigation - Hidden on Mobile -->
-    <nav aria-label="Main navigation">
-      <ul class="nav-links">
-        <li><a href="#how-it-works">How it works</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#testimonials">Reviews</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#faq">FAQ</a></li>
-      </ul>
-    </nav>
-
-    <!-- Desktop CTA Buttons - Hidden on Mobile -->
-    <div class="header-cta">
-      <button class="btn-outline cta-trigger">Login</button>
-      <button class="btn-primary cta-trigger">Start Free →</button>
+      <!-- Hamburger (visible on mobile only) -->
+      <button class="hamburger" type="button"
+              aria-label="Open navigation menu"
+              aria-expanded="false"
+              aria-controls="mobileMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
 
-    <!-- Hamburger Menu - Mobile Only -->
-    <button class="hamburger" aria-label="Menu" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </div>
-
-  <!-- Mobile Menu - Slides Down on Mobile -->
-  <div class="mobile-menu">
-     <button class="mobile-menu-close" aria-label="Close menu">
-       <i class="fas fa-times"></i>
-     </button>
-    <nav aria-label="Mobile navigation">
-      <ul class="mobile-nav-links">
-        <li><a href="#how-it-works">How it works</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#testimonials">Reviews</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#faq">FAQ</a></li>
-      </ul>
-    </nav>
-    <div class="mobile-cta">
-      <button class="btn-outline cta-trigger">Login</button>
-      <button class="btn-primary cta-trigger">Go to Dashboard →</button>
-    </div>
-  </div>
-
-  <!-- Mobile Menu Backdrop - Must be inside header for correct z-index stacking -->
-  <div class="mobile-menu-backdrop"></div>
-</header>
-
-<!-- HERO SECTION  -->
-<section id="hero">
-  <div class="hero-inner">
-    <!-- Left: Copy -->
-    <div class="hero-copy">
-      <div class="hero-badge">
-        <span class="dot"></span>
-        Powered by AI · Built for creators
-      </div>
-
-      <h1 class="hero-title">
-        The <span class="line-accent">Idea Engine</span><br>
-        for <span class="typing-wrapper"><span class="typing-target line-accent" id="typing-hero">Creators</span></span><br>
-        Who <span class="line-orange">Never Stop</span>
-      </h1>
-
-      <p class="hero-desc">
-        Stop staring at a blank screen. Idea-Engne generates 30 days of tailored social media content ideas in under 60 seconds so you can focus on creating, not planning.
-      </p>
-
-      <div class="hero-value-props">
-        <div class="value-prop">
-          <i class="fas fa-check-circle"></i>
-          <span><strong>For:</strong> Content creators, coaches, founders & brand managers</span>
-        </div>
-        <div class="value-prop">
-          <i class="fas fa-check-circle"></i>
-          <span><strong>Benefit:</strong> Post 5× more consistently with zero creative burnout</span>
-        </div>
-        <div class="value-prop">
-          <i class="fas fa-check-circle"></i>
-          <span><strong>Why us:</strong> Niche-specific, brand-aware ideas not generic fluff</span>
-        </div>
-      </div>
-
-      <div class="hero-actions">
-        <button class="btn-accent cta-trigger">⚡ start free </button>
-        <button class="btn-outline cta-trigger">See a Demo</button>
-      </div>
-
-      <p class="hero-note">
-        <i class="fas fa-lock"></i> No credit card required · Instant access · 15 free ideas
-      </p>
-
-      <div class="hero-stats">
-        <div class="stat-item">
-          <span class="stat-number" data-count="12000">0</span>
-          <span class="stat-label">Active Creators</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number" data-count="500000">0</span>
-          <span class="stat-label">Ideas Generated</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number" data-count="98">0</span>
-          <span class="stat-label">% Satisfaction</span>
-        </div>
+    <!-- Mobile Menu Sidebar -->
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation">
+      <button class="mobile-menu-close" type="button" aria-label="Close navigation menu">
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
+      <nav aria-label="Mobile navigation links">
+        <ul class="mobile-nav-links">
+          <li><a href="#how-it-works"><i class="fas fa-map-signs" aria-hidden="true"></i> How it works</a></li>
+          <li><a href="#features"><i class="fas fa-trophy" aria-hidden="true"></i> Features</a></li>
+          <li><a href="#testimonials"><i class="fas fa-star" aria-hidden="true"></i> Reviews</a></li>
+          <li><a href="#pricing"><i class="fas fa-tag" aria-hidden="true"></i> Pricing</a></li>
+          <li><a href="#faq"><i class="fas fa-question-circle" aria-hidden="true"></i> FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-cta">
+        <button class="btn-outline cta-trigger" type="button">Login</button>
+        <button class="btn-primary cta-trigger" type="button">Get Started Free →</button>
       </div>
     </div>
 
-    <!-- Right: UI Mockup -->
-    <div class="hero-visual">
-      <div class="browser-mockup">
-        <div class="browser-bar">
-          <div class="browser-dots">
-            <div class="browser-dot"></div>
-            <div class="browser-dot"></div>
-            <div class="browser-dot"></div>
-          </div>
-          <div class="browser-url">
-            <i class="fas fa-lock"></i>
-            idea-engne.app
-          </div>
+    <div class="mobile-menu-backdrop" aria-hidden="true"></div>
+  </header>
+
+
+       <!-- HERO -->
+  <section id="hero" aria-labelledby="hero-heading">
+    <div class="hero-inner">
+
+      <!-- Left: Copy -->
+      <div class="hero-copy">
+        <div class="hero-badge" role="status">
+          <span class="dot" aria-hidden="true"></span>
+          Powered by AI · Built for creators
         </div>
-        <div class="mockup-content">
-          <div class="mockup-header-ui">
-            <div class="icon-badge">⚡<span class="app-logo"> Idea-Engne</span></div>
-            <span style="font-size:1.5rem; font-weight: 600; opacity:.8;">Dashboard</span>
-          </div>
-          <div class="mockup-body">
-            <div class="mockup-input-area">🎯 Your niche: Fitness & Wellness for busy professionals...</div>
-            <div class="mockup-generate-btn">⚡ Generate 30 Ideas Instantly</div>
-            <div class="mockup-ideas-list">
-              <div class="mockup-idea-item">
-                <i class="fas fa-lightbulb"></i>
-                <span>"5-minute morning routines that actually work for 9-to-5ers"</span>
-              </div>
-              <div class="mockup-idea-item">
-                <i class="fas fa-lightbulb"></i>
-                <span>"What I eat in a day: High-protein meals under 20 mins"</span>
-              </div>
-              <div class="mockup-idea-item">
-                <i class="fas fa-lightbulb"></i>
-                <span>"Desk-job workout: 10-min movement break for remote workers"</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Floating phone -->
-      <div class="phone-mockup-float">
-        <div class="phone-notch"></div>
-        <div class="phone-screen">
-          <div class="phone-bar primary"></div>
-          <div class="phone-bar" style="width:90%;margin:.4rem 0;"></div>
-          <div class="phone-bar accent"></div>
-          <div class="phone-bar" style="width:80%;margin:.4rem 0;"></div>
-          <div class="phone-bar" style="width:90%;"></div>
-          <div class="phone-bar primary" style="width:80%;margin:.4rem 0;"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+        <h1 class="hero-title" id="hero-heading">
+          The <span class="line-accent">Idea Engine</span><br>
+          for <span class="typing-target line-accent" id="typing-hero" aria-live="polite">Creators</span><br>
+          Who <span class="line-orange">Never Stop</span>
+        </h1>
 
-<!--  SOCIAL PROOF BAR  -->
-<section id="social-proof-bar">
-  <div class="proof-bar-inner">
-    <div class="proof-item">
-      <i class="fas fa-star"></i>
-      <span><strong>4.8/5</strong> Avg rating</span>
-    </div>
-
-    <div class="proof-item">
-      <i class="fas fa-users"></i>
-      <span><strong>12,000+</strong> Creators trust us</span>
-    </div>
-
-    <div class="proof-item">
-      <i class="fas fa-bolt"></i>
-      <span><strong>500K+</strong> ideas generated</span>
-    </div>
-
-    <div class="proof-item">
-      <i class="fas fa-clock"></i>
-      <span><strong>60 seconds</strong> avg generation time</span>
-    </div>
-
-    <div class="proof-item">
-      <i class="fas fa-shield-alt"></i>
-      <span><strong>No card</strong> required to start</span>
-    </div>
-
-  </div>
-</section>
-
-<!--  PROBLEM / SOLUTION  -->
-<section id="problem">
-  <div class="problem-inner container">
-    <!-- Problem Side -->
-    <div class="fade-in-left">
-      <span class="section-tag accent">
-        <i class="fas fa-exclamation-triangle"></i> The Creator's Struggle
-      </span>
-      <h2 class="section-title">
-        Sound familiar?<br>You're not alone.
-      </h2>
-      <p class="section-subtitle">
-        Every content creator hits these walls. They slow you down, drain your energy, and stall your growth.
-      </p>
-
-      <div class="problem-list">
-        <div class="problem-item fade-in stagger-1">
-          <div class="problem-icon"><i class="fas fa-battery-empty"></i></div>
-          <div class="problem-text">
-            <h4>Running Out of Ideas</h4>
-            <p>You sit for hours trying to think of what to post next. The blank content calendar haunts you every Sunday.</p>
-          </div>
-        </div>
-        <div class="problem-item fade-in stagger-2">
-          <div class="problem-icon"><i class="fas fa-clock"></i></div>
-          <div class="problem-text">
-            <h4>Hours Wasted Brainstorming</h4>
-            <p>What should take 10 minutes becomes a 3-hour rabbit hole of scrolling competitors and saving inspo posts that never get used.</p>
-          </div>
-        </div>
-        <div class="problem-item fade-in stagger-3">
-          <div class="problem-icon"><i class="fas fa-chart-line"></i></div>
-          <div class="problem-text">
-            <h4>Inconsistent Posting = Stalled Growth</h4>
-            <p>Algorithms reward consistency. When ideas dry up, posting slows down, and engagement drops — breaking the momentum you've worked hard to build.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Solution Side -->
-    <div class="solution-side fade-in-right">
-      <div class="solution-card">
-        <span class="section-tag">
-          <i class="fas fa-bolt"></i> The Fix
-        </span>
-        <h3>Meet Idea-Engne:<br>Your Content Brain</h3>
-        <p>
-          Describe your niche in one sentence. Idea-Engne's AI generates 30 tailored, platform-specific post ideas in seconds — calibrated to your voice and audience.
+        <p class="hero-desc">
+          Stop staring at a blank screen. Idea-Engne generates 30 days of tailored
+          social media content ideas in under 60 seconds — so you can focus on
+          creating, not planning.
         </p>
-        <div class="solution-benefits">
-          <div class="solution-benefit">
-            <i class="fas fa-check-circle"></i>
-            <span>30 content ideas generated in under 60 seconds</span>
+
+        <div class="hero-value-props">
+          <div class="value-prop">
+            <i class="fas fa-check-circle" aria-hidden="true"></i>
+            <span><strong>For:</strong> Content creators, coaches, founders &amp; brand managers</span>
           </div>
-          <div class="solution-benefit">
-            <i class="fas fa-check-circle"></i>
-            <span>Tailored to your niche, audience, and brand voice</span>
+          <div class="value-prop">
+            <i class="fas fa-check-circle" aria-hidden="true"></i>
+            <span><strong>Benefit:</strong> Post 5&times; more consistently with zero creative burnout</span>
           </div>
-          <div class="solution-benefit">
-            <i class="fas fa-check-circle"></i>
-            <span>Works for Instagram, TikTok, LinkedIn, Twitter & more</span>
-          </div>
-          <div class="solution-benefit">
-            <i class="fas fa-check-circle"></i>
-            <span>Save, organize & export your favorite ideas</span>
-          </div>
-          <div class="solution-benefit">
-            <i class="fas fa-check-circle"></i>
-            <span>No generic content — always fresh and specific</span>
+          <div class="value-prop">
+            <i class="fas fa-check-circle" aria-hidden="true"></i>
+            <span><strong>Why us:</strong> Niche-specific, brand-aware ideas — not generic fluff</span>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!--  HOW IT WORKS  -->
-<section id="how-it-works">
-  <div class="container">
-    <div class="how-header fade-in">
-      <span class="section-tag">
-        <i class="fas fa-map-signs"></i> How It Works
-      </span>
-      <h2 class="section-title">From zero ideas to 30 posts<br>in 3 practical steps</h2>
-      <p class="section-subtitle">
-        No learning curve. No complex setup. Just describe what you do and let the engine do the heavy lifting.
-      </p>
-    </div>
-
-    <div class="steps-grid">
-      <div class="step-card fade-in stagger-1">
-        <div class="step-number">1</div>
-        <div class="step-icon-wrap purple">
-          <i class="fas fa-fingerprint"></i>
+        <div class="hero-actions">
+          <button class="btn-accent cta-trigger" type="button">⚡ Start Free</button>
+          <button class="btn-outline cta-trigger" type="button">See a Demo</button>
         </div>
-        <h3>Describe Your Brand</h3>
-        <p>
-          Tell Idea-Engne about your niche, your audience, and your brand personality. The more specific, the sharper the ideas.
+
+        <p class="hero-note">
+          <i class="fas fa-lock" aria-hidden="true"></i>
+          No credit card required · Instant access · 15 free ideas
         </p>
-        <div class="step-detail">
-          <strong>Example:</strong> "I'm a fitness coach for busy moms who want to lose weight without going to the gym."
+
+        <div class="hero-stats" aria-label="Key statistics">
+          <div class="stat-item">
+            <span class="stat-number" data-count="12000" aria-live="polite">0</span>
+            <span class="stat-label">Active Creators</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="500000" aria-live="polite">0</span>
+            <span class="stat-label">Ideas Generated</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="98" aria-live="polite">0</span>
+            <span class="stat-label">% Satisfaction</span>
+          </div>
         </div>
       </div>
 
-      <div class="step-card fade-in stagger-2">
-        <div class="step-number">2</div>
-        <div class="step-icon-wrap orange">
-          <i class="fas fa-bolt"></i>
-        </div>
-        <h3>Generate Instantly</h3>
-        <p>
-          Hit generate and get 30 AI-crafted post ideas in under 60 seconds. Each idea includes a hook, format suggestion, and hashtag set.
-        </p>
-        <div class="step-detail">
-          <strong>Output includes:</strong> Post hook, content angle, platform fit, and suggested CTA.
-        </div>
-      </div>
-
-      <div class="step-card fade-in stagger-3">
-        <div class="step-number">3</div>
-        <div class="step-icon-wrap green">
-          <i class="fas fa-bookmark"></i>
-        </div>
-        <h3>Save, Schedule & Ship</h3>
-        <p>
-          Save your favorites to your personal idea vault, export to your calendar, and start posting with confidence. Never miss a day.
-        </p>
-        <div class="step-detail">
-          <strong>Export to:</strong> Notion, Google Sheets, Calendar, or plain text.
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!--  UI PREVIEW / DEVICE MOCKUP  -->
-<section id="ui-preview">
-  <div class="preview-inner">
-    <div class="preview-header fade-in">
-      <span class="section-tag">
-        <i class="fas fa-desktop"></i> Product Preview
-      </span>
-      <h2 class="section-title">A tool so clean,<br>you'll actually enjoy using it</h2>
-      <p class="section-subtitle" style="margin: 0 auto;">
-        Designed for speed and simplicity. Input your niche, click generate, and watch ideas populate in real time.
-      </p>
-    </div>
-
-    <div class="devices-scene fade-in">
-      <!-- Desktop mockup -->
-      <div>
-        <div class="desktop-mockup">
-          <div class="desktop-bar">
-            <div class="desktop-dots">
-              <div class="desktop-dot"></div>
-              <div class="desktop-dot"></div>
-              <div class="desktop-dot"></div>
+      <!-- Right: UI Mockup Visual-->
+      <div class="hero-visual" aria-hidden="true">
+        <div class="browser-mockup">
+          <div class="browser-bar">
+            <div class="browser-dots">
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
             </div>
-            <div class="desktop-url-bar">
-              <i class="fas fa-lock" style="color: var(--success); font-size: 1rem;"></i>
-              idea-engne.app/dashboard
+            <div class="browser-url">
+              <i class="fas fa-lock"></i>
+              idea-engne.app
             </div>
           </div>
-          <div class="desktop-screen">
-            <div class="app-nav-bar">
-              <span class="logo">⚡ Idea-Engne</span>
-              <div class="app-nav-links">
-                <span>Dashboard</span>
-                <span>Ideas Vault</span>
-                <span>Calendar</span>
-                <span>Settings</span>
+          <div class="mockup-content">
+            <div class="mockup-header-ui">
+              <div style="display:flex;align-items:center;gap:0.8rem;">
+                <div class="icon-badge">⚡</div>
+                <span class="app-logo">Idea-Engne</span>
               </div>
+              <span style="font-size:1.4rem;font-weight:600;opacity:.8;">Dashboard</span>
             </div>
-            <div class="app-body">
-              <div class="app-panel">
-                <div class="app-panel-title">
-                  <i class="fas fa-sliders-h"></i> Generate Ideas
-                </div>
-                <input class="app-input" type="text" value="Fitness coach for busy professionals" readonly>
-                <div class="app-select">
-                  <span class="app-tag selected">Instagram</span>
-                  <span class="app-tag selected">LinkedIn</span>
-                  <span class="app-tag">TikTok</span>
-                  <span class="app-tag">Twitter</span>
-                </div>
-                <input class="app-input" type="text" value="Motivational, Educational, Behind-scenes" readonly>
-                <div class="app-generate-btn">
-                  <i class="fas fa-bolt"></i> Generate 30 Ideas
-                </div>
+            <div class="mockup-body">
+              <div class="mockup-input-area">
+                🎯 Your niche: Fitness &amp; Wellness for busy professionals…
               </div>
-
-              <div class="app-panel app-results-panel">
-                <div class="app-panel-title">
-                  <i class="fas fa-lightbulb"></i> Generated Ideas <span style="margin-left:auto; background:var(--light-bg); color:var(--primary); padding: 0.3rem 0.8rem; border-radius: 10rem; font-size:1.1rem;">30 ideas</span>
+              <div class="mockup-generate-btn">⚡ Generate 30 Ideas Instantly</div>
+              <div class="mockup-ideas-list">
+                <div class="mockup-idea-item">
+                  <i class="fas fa-lightbulb"></i>
+                  <span>"5-minute morning routines that actually work for 9-to-5ers"</span>
                 </div>
-                <div class="result-item">
-                  <i class="fas fa-check-circle"></i>
-                  <span>"3 micro-workouts you can do between Zoom calls"</span>
-                  <span class="save-btn"><i class="fas fa-bookmark"></i></span>
+                <div class="mockup-idea-item">
+                  <i class="fas fa-lightbulb"></i>
+                  <span>"What I eat in a day: High-protein meals under 20 mins"</span>
                 </div>
-                <div class="result-item">
-                  <i class="fas fa-check-circle"></i>
-                  <span>"What a fitness coach's Monday looks like (real talk)"</span>
-                  <span class="save-btn"><i class="fas fa-bookmark"></i></span>
-                </div>
-                <div class="result-item">
-                  <i class="fas fa-check-circle"></i>
-                  <span>"Why the 'no time' excuse is costing you your health"</span>
-                  <span class="save-btn"><i class="fas fa-bookmark"></i></span>
-                </div>
-                <div class="result-item">
-                  <i class="fas fa-check-circle"></i>
-                  <span>"Client transformation: Sarah lost 18lbs working 60hr weeks"</span>
-                  <span class="save-btn"><i class="fas fa-bookmark"></i></span>
+                <div class="mockup-idea-item">
+                  <i class="fas fa-lightbulb"></i>
+                  <span>"Desk-job workout: 10-min movement break for remote workers"</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="desktop-stand"></div>
-        <div class="desktop-base"></div>
-      </div>
 
-      <!-- Mobile mockup -->
-      <div class="mobile-float">
-        <div class="mobile-notch"></div>
-        <div class="mobile-screen">
-          <div class="mobile-app-header">
-            <span>⚡ Idea-Engne</span>
-            <i class="fas fa-bell" style="color: var(--accent); font-size:1.3rem;"></i>
-          </div>
-          <div class="mobile-result-item">💡 "5 signs you're overtraining (and what to do)"</div>
-          <div class="mobile-result-item">📱 "Day in my life: 5am club edition"</div>
-          <div class="mobile-result-item">🔥 "Hot take: cardio is overrated for weight loss"</div>
-          <div class="mobile-result-item">✅ "Your Sunday checklist for a consistent fitness week"</div>
-          <div class="mobile-bottom-bar">
-            <input class="mobile-input" type="text" placeholder="Add niche..." readonly>
-            <div class="mobile-send-btn"><i class="fas fa-bolt"></i></div>
+        <!-- Floating phone mockup -->
+        <div class="phone-mockup-float">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="phone-bar primary"></div>
+            <div class="phone-bar" style="width:90%;margin:.4rem 0;"></div>
+            <div class="phone-bar accent"></div>
+            <div class="phone-bar" style="width:80%;margin:.4rem 0;"></div>
+            <div class="phone-bar" style="width:90%;"></div>
+            <div class="phone-bar primary" style="width:80%;margin:.4rem 0;"></div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<!--  FEATURES — WHY US  -->
-<section id="features">
-  <div class="features-inner">
-    <div class="features-header">
+    </div>
+  </section>
+
+
+       <!-- SOCIAL PROOF BAR -->
+  <section id="social-proof-bar" aria-label="Social proof statistics">
+    <div class="proof-bar-inner">
+      <div class="proof-item">
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <span><strong>4.8/5</strong> Avg rating</span>
+      </div>
+      <div class="proof-item">
+        <i class="fas fa-users" aria-hidden="true"></i>
+        <span><strong>10,000+</strong> Creators trust us</span>
+      </div>
+      <div class="proof-item">
+        <i class="fas fa-bolt" aria-hidden="true"></i>
+        <span><strong>500K+</strong> Ideas generated</span>
+      </div>
+      <div class="proof-item">
+        <i class="fas fa-clock" aria-hidden="true"></i>
+        <span><strong>60 seconds</strong> avg generation time</span>
+      </div>
+      <div class="proof-item">
+        <i class="fas fa-shield-alt" aria-hidden="true"></i>
+        <span><strong>No card</strong> required to start</span>
+      </div>
+    </div>
+  </section>
+
+
+       <!-- PROBLEM / SOLUTION -->
+  <section id="problem" aria-labelledby="problem-heading">
+    <div class="problem-inner container">
+
+      <!-- Problem Side -->
       <div class="fade-in-left">
         <span class="section-tag accent">
-          <i class="fas fa-trophy"></i> Why Idea-Engne
+          <i class="fas fa-exclamation-triangle" aria-hidden="true"></i> The Creator's Struggle
         </span>
-        <h2 class="section-title">Not just another<br>AI content tool</h2>
+        <h2 class="section-title" id="problem-heading">
+          Sound familiar?<br>You're not alone.
+        </h2>
+        <p class="section-subtitle" style="text-align:left;">
+          Every content creator hits these walls. They slow you down, drain your energy,
+          and stall your growth.
+        </p>
+
+        <div class="problem-list">
+          <div class="problem-item fade-in stagger-1">
+            <div class="problem-icon"><i class="fas fa-battery-empty" aria-hidden="true"></i></div>
+            <div class="problem-text">
+              <h4>Running Out of Ideas</h4>
+              <p>You sit for hours trying to think of what to post next. The blank content calendar haunts you every Sunday.</p>
+            </div>
+          </div>
+          <div class="problem-item fade-in stagger-2">
+            <div class="problem-icon"><i class="fas fa-clock" aria-hidden="true"></i></div>
+            <div class="problem-text">
+              <h4>Hours Wasted Brainstorming</h4>
+              <p>What should take 10 minutes becomes a 3-hour rabbit hole of scrolling competitors and saving inspo posts that never get used.</p>
+            </div>
+          </div>
+          <div class="problem-item fade-in stagger-3">
+            <div class="problem-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+            <div class="problem-text">
+              <h4>Inconsistent Posting = Stalled Growth</h4>
+              <p>Algorithms reward consistency. When ideas dry up, posting slows and engagement drops — breaking momentum you've worked hard to build.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Solution Side-->
+      <div class="fade-in-right">
+        <div class="solution-card">
+          <span class="section-tag">
+            <i class="fas fa-bolt" aria-hidden="true"></i> The Fix
+          </span>
+          <h3>Meet Idea-Engne:<br>Your Content Brain</h3>
+          <p>
+            Describe your niche in one sentence. Idea-Engne's AI generates 30 tailored,
+            platform-specific post ideas in seconds — calibrated to your voice and audience.
+          </p>
+          <div class="solution-benefits">
+            <div class="solution-benefit">
+              <i class="fas fa-check-circle" aria-hidden="true"></i>
+              <span>30 content ideas generated in under 60 seconds</span>
+            </div>
+            <div class="solution-benefit">
+              <i class="fas fa-check-circle" aria-hidden="true"></i>
+              <span>Tailored to your niche, audience, and brand voice</span>
+            </div>
+            <div class="solution-benefit">
+              <i class="fas fa-check-circle" aria-hidden="true"></i>
+              <span>Works for Instagram, TikTok, LinkedIn, Twitter &amp; more</span>
+            </div>
+            <div class="solution-benefit">
+              <i class="fas fa-check-circle" aria-hidden="true"></i>
+              <span>Save, organise &amp; export your favourite ideas</span>
+            </div>
+            <div class="solution-benefit">
+              <i class="fas fa-check-circle" aria-hidden="true"></i>
+              <span>No generic content — always fresh and specific</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+       <!-- HOW IT WORKS -->
+  <section id="how-it-works" aria-labelledby="how-heading">
+    <div class="container">
+      <div class="how-header fade-in">
+        <span class="section-tag">
+          <i class="fas fa-map-signs" aria-hidden="true"></i> How It Works
+        </span>
+        <h2 class="section-title" id="how-heading">
+          From zero ideas to 30 posts<br>in 3 practical steps
+        </h2>
         <p class="section-subtitle">
-          Most tools generate generic ideas anyone could Google. Idea-Engne generates ideas that sound like <em>you</em> — tuned to your niche, audience, and voice.
+          No learning curve. No complex setup. Just describe what you do and let the
+          engine do the heavy lifting.
         </p>
       </div>
-      <div class="fade-in-right features-header-cta">
-        <button class="btn-accent cta-trigger">Try it free — no card needed</button>
+
+      <div class="steps-grid">
+
+        <div class="step-card fade-in stagger-1">
+          <div class="step-number" aria-hidden="true">1</div>
+          <div class="step-icon-wrap purple" aria-hidden="true">
+            <i class="fas fa-fingerprint"></i>
+          </div>
+          <h3>Describe Your Brand</h3>
+          <p>
+            Tell Idea-Engne about your niche, your audience, and your brand personality.
+            The more specific, the sharper the ideas.
+          </p>
+          <div class="step-detail">
+            <strong>Example:</strong> "I'm a fitness coach for busy moms who want to lose
+            weight without going to the gym."
+          </div>
+        </div>
+
+        <div class="step-card fade-in stagger-2">
+          <div class="step-number" aria-hidden="true">2</div>
+          <div class="step-icon-wrap orange" aria-hidden="true">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3>Generate Instantly</h3>
+          <p>
+            Hit generate and get 30 AI-crafted post ideas in under 60 seconds. Each idea
+            includes a hook, format suggestion, and hashtag set.
+          </p>
+          <div class="step-detail">
+            <strong>Output includes:</strong> Post hook, content angle, platform fit, and
+            suggested CTA.
+          </div>
+        </div>
+
+        <div class="step-card fade-in stagger-3">
+          <div class="step-number" aria-hidden="true">3</div>
+          <div class="step-icon-wrap green" aria-hidden="true">
+            <i class="fas fa-bookmark"></i>
+          </div>
+          <h3>Save, Schedule &amp; Ship</h3>
+          <p>
+            Save your favourites to your personal idea vault, export to your calendar,
+            and start posting with confidence. Never miss a day.
+          </p>
+          <div class="step-detail">
+            <strong>Export to:</strong> Notion, Google Sheets, Calendar, or plain text.
+          </div>
+        </div>
+
       </div>
     </div>
+  </section>
 
-    <div class="features-grid">
-      <div class="feature-card fade-in stagger-1">
-        <div class="feature-icon accent">
-          <i class="fas fa-crosshairs"></i>
-        </div>
-        <h3>Niche-Specific Output</h3>
-        <p>Ideas are calibrated to your exact niche, not a generic topic. A fitness coach gets different ideas than a finance coach — as it should be.</p>
-        <span class="vs-badge"><i class="fas fa-bolt"></i> vs. generic tools</span>
-      </div>
 
-      <div class="feature-card fade-in stagger-2">
-        <div class="feature-icon purple">
-          <i class="fas fa-microphone-alt"></i>
-        </div>
-        <h3>Brand Voice Matching</h3>
-        <p>Choose your tone — educational, entertaining, motivational, or controversial. Every idea sounds like your brand, not a robot.</p>
-        <span class="vs-badge"><i class="fas fa-bolt"></i> vs. one-size-fits-all AI</span>
-      </div>
-
-      <div class="feature-card fade-in stagger-3">
-        <div class="feature-icon green">
-          <i class="fas fa-calendar-check"></i>
-        </div>
-        <h3>30 Ideas at Once</h3>
-        <p>One session fills your content calendar for the entire month. Batch your brainstorming once, and post consistently every day.</p>
-        <span class="vs-badge"><i class="fas fa-bolt"></i> vs. one idea at a time</span>
-      </div>
-
-      <div class="feature-card fade-in stagger-1">
-        <div class="feature-icon accent">
-          <i class="fas fa-share-alt"></i>
-        </div>
-        <h3>Multi-Platform Ready</h3>
-        <p>Ideas come tagged for Instagram, TikTok, LinkedIn, Twitter, and YouTube. Know exactly which format fits each platform.</p>
-        <span class="vs-badge"><i class="fas fa-bolt"></i> vs. platform-blind tools</span>
-      </div>
-
-      <div class="feature-card fade-in stagger-2">
-        <div class="feature-icon purple">
-          <i class="fas fa-vault"></i>
-        </div>
-        <h3>Personal Idea Vault</h3>
-        <p>Save your favorite ideas to your vault, organize by category or platform, and access them anytime — even on mobile.</p>
-        <span class="vs-badge"><i class="fas fa-bolt"></i> vs. losing ideas in tabs</span>
-      </div>
-
-      <div class="feature-card fade-in stagger-3">
-        <div class="feature-icon green">
-          <i class="fas fa-tachometer-alt"></i>
-        </div>
-        <h3>60-Second Generation</h3>
-        <p>No loading spinners. No waiting. Input your niche and your 30 ideas are live in under a minute. Your time is sacred.</p>
-        <span class="vs-badge"><i class="fas fa-bolt"></i> vs. slow, clunky tools</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== TESTIMONIALS ==================== -->
-<section id="testimonials">
-  <div class="container">
-    <div class="testimonials-header fade-in">
-      <span class="section-tag">
-        <i class="fas fa-star"></i> Creator Stories
-      </span>
-      <h2 class="section-title">Real creators. Real results.</h2>
-      <p class="section-subtitle">
-        Join thousands of content creators who've transformed how they plan and produce content.
-      </p>
-    </div>
-
-    <div class="testimonials-grid">
-      <div class="testimonial-card fade-in stagger-1">
-        <div class="testimonial-stars">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i>
-          <i class="fas fa-star"></i><i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <p class="testimonial-text">
-          "My engagement literally doubled in 6 weeks. I went from posting twice a week to every single day because I never run out of ideas anymore. Idea-Engne is the best investment I've made for my content."
+       <!-- UI PREVIEW -->
+  <section id="ui-preview" aria-labelledby="preview-heading">
+    <div class="preview-inner container">
+      <div class="preview-header fade-in">
+        <span class="section-tag">
+          <i class="fas fa-desktop" aria-hidden="true"></i> Product Preview
+        </span>
+        <h2 class="section-title" id="preview-heading">
+          A tool so clean,<br>you'll actually enjoy using it
+        </h2>
+        <p class="section-subtitle" style="margin:0 auto;">
+          Designed for speed and simplicity. Input your niche, click generate, and watch
+          ideas populate in real time.
         </p>
-        <div class="testimonial-author">
-          <img src="https://i.pravatar.cc/150?img=47" alt="Rachel L. - Fitness Influencer" class="author-photo" loading="lazy">
-          <div class="author-info">
-            <strong>Rachel L.</strong>
-            <span>Fitness Influencer · 280K followers</span>
+      </div>
+
+      <div class="devices-scene fade-in" aria-hidden="true">
+
+        <!-- Desktop Mockup -->
+        <div>
+          <div class="desktop-mockup">
+            <div class="desktop-bar">
+              <div class="desktop-dots">
+                <div class="desktop-dot"></div>
+                <div class="desktop-dot"></div>
+                <div class="desktop-dot"></div>
+              </div>
+              <div class="desktop-url-bar">
+                <i class="fas fa-lock" style="color:var(--success);font-size:1rem;"></i>
+                idea-engne.app/dashboard
+              </div>
+            </div>
+            <div class="desktop-screen">
+              <div class="app-nav-bar">
+                <span class="logo">⚡ Idea-Engne</span>
+                <div class="app-nav-links">
+                  <span>Dashboard</span>
+                  <span>Ideas Vault</span>
+                  <span>Calendar</span>
+                  <span>Settings</span>
+                </div>
+              </div>
+              <div class="app-body">
+                <div class="app-panel">
+                  <div class="app-panel-title">
+                    <i class="fas fa-sliders-h"></i> Generate Ideas
+                  </div>
+                  <input class="app-input" type="text"
+                         value="Fitness coach for busy professionals"
+                         readonly tabindex="-1">
+                  <div class="app-select">
+                    <span class="app-tag selected">Instagram</span>
+                    <span class="app-tag selected">LinkedIn</span>
+                    <span class="app-tag">TikTok</span>
+                    <span class="app-tag">Twitter</span>
+                  </div>
+                  <input class="app-input" type="text"
+                         value="Motivational, Educational, Behind-scenes"
+                         readonly tabindex="-1">
+                  <div class="app-generate-btn" role="presentation">
+                    <i class="fas fa-bolt"></i> Generate 30 Ideas
+                  </div>
+                </div>
+
+                <div class="app-panel app-results-panel">
+                  <div class="app-panel-title">
+                    <i class="fas fa-lightbulb"></i>
+                    Generated Ideas
+                    <span style="margin-left:auto;background:var(--light-bg);color:var(--primary);
+                                 padding:0.3rem 0.8rem;border-radius:10rem;font-size:1.1rem;">
+                      30 ideas
+                    </span>
+                  </div>
+                  <div class="result-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>"3 micro-workouts you can do between Zoom calls"</span>
+                    <span class="save-btn"><i class="fas fa-bookmark"></i></span>
+                  </div>
+                  <div class="result-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>"What a fitness coach's Monday looks like (real talk)"</span>
+                    <span class="save-btn"><i class="fas fa-bookmark"></i></span>
+                  </div>
+                  <div class="result-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>"Why the 'no time' excuse is costing you your health"</span>
+                    <span class="save-btn"><i class="fas fa-bookmark"></i></span>
+                  </div>
+                  <div class="result-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>"Client transformation: Sarah lost 18lbs working 60hr weeks"</span>
+                    <span class="save-btn"><i class="fas fa-bookmark"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <i class="fas fa-check-circle verified-badge"></i>
+          <div class="desktop-stand"></div>
+          <div class="desktop-base"></div>
+        </div>
+
+        <!-- Mobile Mockup -->
+        <div class="mobile-float">
+          <div class="mobile-notch"></div>
+          <div class="mobile-screen">
+            <div class="mobile-app-header">
+              <span>⚡ Idea-Engne</span>
+              <i class="fas fa-bell" style="color:var(--accent);font-size:1.3rem;"></i>
+            </div>
+            <div class="mobile-result-item">💡 "5 signs you're overtraining (and what to do)"</div>
+            <div class="mobile-result-item">📱 "Day in my life: 5am club edition"</div>
+            <div class="mobile-result-item">🔥 "Hot take: cardio is overrated for weight loss"</div>
+            <div class="mobile-result-item">✅ "Your Sunday checklist for a consistent fitness week"</div>
+            <div class="mobile-bottom-bar">
+              <input class="mobile-input" type="text" placeholder="Add niche…" readonly tabindex="-1">
+              <div class="mobile-send-btn" role="presentation">
+                <i class="fas fa-bolt"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+       <!-- FEATURES -->
+  <section id="features" aria-labelledby="features-heading">
+    <div class="features-inner">
+
+      <div class="features-header">
+        <div class="fade-in-left">
+          <span class="section-tag accent">
+            <i class="fas fa-trophy" aria-hidden="true"></i> Why Idea-Engne
+          </span>
+          <h2 class="section-title" id="features-heading">
+            Not just another<br>AI content tool
+          </h2>
+          <p class="section-subtitle">
+            Most tools generate generic ideas anyone could Google. Idea-Engne generates ideas
+            that sound like <em>you</em> tuned to your niche, audience, and voice.
+          </p>
+        </div>
+        <div class="fade-in-right">
+          <button class="btn-accent cta-trigger" type="button">Try it free no card needed</button>
         </div>
       </div>
 
-      <div class="testimonial-card fade-in stagger-2">
-        <div class="testimonial-stars">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i>
-          <i class="fas fa-star"></i><i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
+      <div class="features-grid">
+
+        <div class="feature-card fade-in stagger-1">
+          <div class="feature-icon accent" aria-hidden="true"><i class="fas fa-crosshairs"></i></div>
+          <h3>Niche-Specific Output</h3>
+          <p>Ideas are calibrated to your exact niche, not a generic topic. A fitness coach gets
+             different ideas than a finance coach as it should be.</p>
+          <span class="vs-badge"><i class="fas fa-bolt" aria-hidden="true"></i> vs. generic tools</span>
         </div>
-        <p class="testimonial-text">
-          "As a startup founder, I don't have time to think about content strategy. Idea-Engne gives me a full month of LinkedIn post ideas in one session. My personal brand has grown 3× in 90 days."
+
+        <div class="feature-card fade-in stagger-2">
+          <div class="feature-icon purple" aria-hidden="true"><i class="fas fa-microphone-alt"></i></div>
+          <h3>Brand Voice Matching</h3>
+          <p>Choose your tone — educational, entertaining, motivational, or controversial.
+             Every idea sounds like your brand, not a robot.</p>
+          <span class="vs-badge"><i class="fas fa-bolt" aria-hidden="true"></i> vs. one-size-fits-all AI</span>
+        </div>
+
+        <div class="feature-card fade-in stagger-3">
+          <div class="feature-icon green" aria-hidden="true"><i class="fas fa-calendar-check"></i></div>
+          <h3>30 Ideas at Once</h3>
+          <p>One session fills your content calendar for the entire month. Batch your
+             brainstorming once, and post consistently every day.</p>
+          <span class="vs-badge"><i class="fas fa-bolt" aria-hidden="true"></i> vs. one idea at a time</span>
+        </div>
+
+        <div class="feature-card fade-in stagger-1">
+          <div class="feature-icon accent" aria-hidden="true"><i class="fas fa-share-alt"></i></div>
+          <h3>Multi-Platform Ready</h3>
+          <p>Ideas come tagged for Instagram, TikTok, LinkedIn, Twitter, and YouTube.
+             Know exactly which format fits each platform.</p>
+          <span class="vs-badge"><i class="fas fa-bolt" aria-hidden="true"></i> vs. platform-blind tools</span>
+        </div>
+
+        <div class="feature-card fade-in stagger-2">
+          <div class="feature-icon purple" aria-hidden="true"><i class="fas fa-vault"></i></div>
+          <h3>Personal Idea Vault</h3>
+          <p>Save your favourite ideas to your vault, organise by category or platform,
+             and access them anytime — even on mobile.</p>
+          <span class="vs-badge"><i class="fas fa-bolt" aria-hidden="true"></i> vs. losing ideas in tabs</span>
+        </div>
+
+        <div class="feature-card fade-in stagger-3">
+          <div class="feature-icon green" aria-hidden="true"><i class="fas fa-tachometer-alt"></i></div>
+          <h3>60-Second Generation</h3>
+          <p>No loading spinners. No waiting. Input your niche and your 30 ideas are live
+             in under a minute. Your time is sacred.</p>
+          <span class="vs-badge"><i class="fas fa-bolt" aria-hidden="true"></i> vs. slow, clunky tools</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+       <!-- TESTIMONIALS -->
+  <section id="testimonials" aria-labelledby="testimonials-heading">
+    <div class="container">
+      <div class="testimonials-header fade-in">
+        <span class="section-tag">
+          <i class="fas fa-star" aria-hidden="true"></i> Creator Stories
+        </span>
+        <h2 class="section-title" id="testimonials-heading">Real creators. Real results.</h2>
+        <p class="section-subtitle">
+          Join thousands of content creators who've transformed how they plan and produce content.
         </p>
-        <div class="testimonial-author">
-          <img src="https://i.pravatar.cc/150?img=3" alt="James S. - Startup Founder" class="author-photo" loading="lazy">
-          <div class="author-info">
-            <strong>James S.</strong>
-            <span>SaaS Founder · 45K LinkedIn followers</span>
-          </div>
-          <i class="fas fa-check-circle verified-badge"></i>
-        </div>
       </div>
 
-      <div class="testimonial-card fade-in stagger-3">
-        <div class="testimonial-stars">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i>
-          <i class="fas fa-star"></i><i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
+      <div class="testimonials-grid">
+        <article class="testimonial-card fade-in stagger-1">
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+          </div>
+          <p class="testimonial-text">
+            "My engagement literally doubled in 6 weeks. I went from posting twice a week to every
+            single day because I never run out of ideas anymore. Idea-Engne is the best investment
+            I've made for my content."
+          </p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/150?img=47" alt="Rachel L., Fitness Influencer"
+                 class="author-photo" width="45" height="45" loading="lazy">
+            <div class="author-info">
+              <strong>Rachel L.</strong>
+              <span>Fitness Influencer · 280K followers</span>
+            </div>
+            <i class="fas fa-check-circle verified-badge" title="Verified creator" aria-label="Verified"></i>
+          </div>
+        </article>
+
+        <article class="testimonial-card fade-in stagger-2">
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+          </div>
+          <p class="testimonial-text">
+            "As a startup founder, I don't have time to think about content strategy. Idea-Engne
+            gives me a full month of LinkedIn post ideas in one session. My personal brand has
+            grown 3&times; in 90 days."
+          </p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/150?img=3" alt="James S., SaaS Founder"
+                 class="author-photo" width="45" height="45" loading="lazy">
+            <div class="author-info">
+              <strong>James S.</strong>
+              <span>SaaS Founder · 45K LinkedIn followers</span>
+            </div>
+            <i class="fas fa-check-circle verified-badge" title="Verified creator" aria-label="Verified"></i>
+          </div>
+        </article>
+
+        <article class="testimonial-card fade-in stagger-3">
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+          </div>
+          <p class="testimonial-text">
+            "The ideas feel like they were written by someone who knows my audience personally.
+            It's scary how accurate and relevant they are. I've cancelled 2 other tools since switching."
+          </p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/150?img=25" alt="Kate T., Beauty Creator"
+                 class="author-photo" width="45" height="45" loading="lazy">
+            <div class="author-info">
+              <strong>Kate T.</strong>
+              <span>Beauty Creator · 160K Instagram</span>
+            </div>
+            <i class="fas fa-check-circle verified-badge" title="Verified creator" aria-label="Verified"></i>
+          </div>
+        </article>
+
+        <article class="testimonial-card fade-in stagger-1">
+          <div class="testimonial-stars" aria-label="4 out of 5 stars">
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="far fa-star" aria-hidden="true"></i>
+          </div>
+          <p class="testimonial-text">
+            "I was skeptical at first, but after one session I had 30 genuinely good ideas — not
+            the vague 'share your story' type. Specific, actionable, ready-to-post ideas. My team
+            uses it every Monday."
+          </p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/150?img=12" alt="Marcus W., Marketing Manager"
+                 class="author-photo" width="45" height="45" loading="lazy">
+            <div class="author-info">
+              <strong>Marcus W.</strong>
+              <span>Marketing Manager · B2B SaaS</span>
+            </div>
+            <i class="fas fa-check-circle verified-badge" title="Verified creator" aria-label="Verified"></i>
+          </div>
+        </article>
+
+        <article class="testimonial-card fade-in stagger-2">
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+          </div>
+          <p class="testimonial-text">
+            "I used to dread content planning day. Now I actually look forward to it. 20 minutes
+            on Sunday, and my entire week is mapped out. The ideas are creative, fresh, and always
+            relevant to what my audience loves."
+          </p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/150?img=44" alt="Priya D., Business Coach"
+                 class="author-photo" width="45" height="45" loading="lazy">
+            <div class="author-info">
+              <strong>Priya D.</strong>
+              <span>Business Coach · 92K TikTok</span>
+            </div>
+            <i class="fas fa-check-circle verified-badge" title="Verified creator" aria-label="Verified"></i>
+          </div>
+        </article>
+
+        <article class="testimonial-card fade-in stagger-3">
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+          </div>
+          <p class="testimonial-text">
+            "If you're a solopreneur trying to manage content AND your business, Idea-Engne is a
+            no-brainer. I went from posting 3&times; a month to every day. My DMs have never
+            been busier."
+          </p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/150?img=33" alt="Diego R., Freelance Designer"
+                 class="author-photo" width="45" height="45" loading="lazy">
+            <div class="author-info">
+              <strong>Diego R.</strong>
+              <span>Freelance Designer · Solopreneur</span>
+            </div>
+            <i class="fas fa-check-circle verified-badge" title="Verified creator" aria-label="Verified"></i>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+       <!-- PRICING -->
+  <section id="pricing" aria-labelledby="pricing-heading">
+    <div class="container">
+      <div class="pricing-header fade-in">
+        <span class="section-tag">
+          <i class="fas fa-tag" aria-hidden="true"></i> Simple Pricing
+        </span>
+        <h2 class="section-title" id="pricing-heading">Start free. Upgrade when ready.</h2>
+        <p class="section-subtitle">No hidden fees. Cancel any time. All plans include a 7-day free trial.</p>
+      </div>
+
+      <div class="pricing-grid">
+
+        <!-- Starter -->
+        <div class="pricing-card fade-in stagger-1">
+          <div class="plan-name">Starter</div>
+          <div class="plan-price"><sup>$</sup>0<span>/mo</span></div>
+          <p class="plan-desc">Perfect for getting started and testing the waters.</p>
+          <ul class="plan-features">
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>10 ideas per session</span></li>
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>3 sessions per month</span></li>
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>Instagram &amp; LinkedIn</span></li>
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>Basic idea vault (10 saves)</span></li>
+            <li class="no"><i class="fas fa-times" aria-hidden="true"></i><span>Brand voice customization</span></li>
+            <li class="no"><i class="fas fa-times" aria-hidden="true"></i><span>Export to Notion/Sheets</span></li>
+          </ul>
+          <button class="plan-cta btn-outline cta-trigger" type="button">Get Started Free</button>
         </div>
-        <p class="testimonial-text">
-          "The ideas feel like they were written by someone who knows my audience personally. It's scary how accurate and relevant they are. I've cancelled 2 other tools since switching."
+
+        <div style="position:relative;padding-top:1.6rem;" class="fade-in stagger-2">
+          <div class="popular-badge" aria-label="Most popular plan">⚡ Most Popular</div>
+          <div class="pricing-card popular">
+            <div class="plan-name">Creator</div>
+            <div class="plan-price"><sup>$</sup>18<span>/mo</span></div>
+            <p class="plan-desc">For creators who post consistently and want maximum results.</p>
+            <ul class="plan-features">
+              <li><i class="fas fa-check" aria-hidden="true"></i><span>30 ideas per session</span></li>
+              <li><i class="fas fa-check" aria-hidden="true"></i><span>Unlimited sessions</span></li>
+              <li><i class="fas fa-check" aria-hidden="true"></i><span>All 5 platforms</span></li>
+              <li><i class="fas fa-check" aria-hidden="true"></i><span>Unlimited idea vault</span></li>
+              <li><i class="fas fa-check" aria-hidden="true"></i><span>Brand voice customization</span></li>
+              <li><i class="fas fa-check" aria-hidden="true"></i><span>Export to Notion/Sheets</span></li>
+            </ul>
+            <button class="plan-cta btn-primary cta-trigger" type="button">Start 7-Day Trial</button>
+          </div>
+        </div>
+
+        <!-- Team -->
+        <div class="pricing-card fade-in stagger-3">
+          <div class="plan-name">Team</div>
+          <div class="plan-price"><sup>$</sup>45<span>/mo</span></div>
+          <p class="plan-desc">For agencies and teams managing multiple brand accounts.</p>
+          <ul class="plan-features">
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>Everything in Creator</span></li>
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>Up to 5 team members</span></li>
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>5 brand profiles</span></li>
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>Team idea vault &amp; sharing</span></li>
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>Priority support</span></li>
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>White-label exports</span></li>
+          </ul>
+          <button class="plan-cta btn-outline cta-trigger" type="button">Start 7-Day Trial</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+       <!-- FAQ -->
+  <section id="faq" aria-labelledby="faq-heading">
+    <div class="faq-inner">
+      <div class="faq-header fade-in">
+        <span class="section-tag">
+          <i class="fas fa-question-circle" aria-hidden="true"></i> FAQ
+        </span>
+        <h2 class="section-title" id="faq-heading">Questions? We've got answers.</h2>
+      </div>
+
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            How is Idea-Engne different from ChatGPT?
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              ChatGPT is a general-purpose AI. Idea-Engne is purpose-built for social media content
+              creators. It understands platform nuances, lets you save your brand profile, and generates
+              30 ideas at once — not one prompt at a time. Think of it as a specialised co-pilot,
+              not a general assistant.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            Do the ideas actually sound like me, or are they generic?
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              That's exactly what makes Idea-Engne different. When you set up your profile with your
+              niche, audience details, and brand voice (educational, entertaining, provocative, etc.),
+              the AI uses those parameters for every generation. The ideas are specific to your world,
+              not recycled from a template library.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            Which social media platforms does it support?
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Idea-Engne currently supports Instagram (Reels, Stories, Feed posts), LinkedIn (articles,
+              posts, carousels), TikTok, Twitter/X, and YouTube (Shorts and long-form). Each idea is
+              tagged with the best-fit platform and format recommendation.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            Can I try it before paying?
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Absolutely. The Starter plan is completely free forever — 10 ideas per session,
+              3 sessions per month, no credit card required. Paid plans include a 7-day free
+              trial with full access, and you can cancel any time, no questions asked.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            What if I don't like the generated ideas?
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Regenerate with a click. You can refine your niche description, adjust the tone,
+              or add context like trending topics or upcoming events. Each generation is unique,
+              so you'll always get fresh ideas. Most creators find a few gems in every batch
+              worth building on.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+       <!-- BUILT BY -->
+  <section id="built-by" aria-labelledby="built-by-heading">
+    <div class="built-by-inner container">
+
+      <!-- Developer Card -->
+      <div class="dev-card fade-in-left">
+        <span class="dev-tag">
+          <i class="fas fa-code" aria-hidden="true"></i> Built by TonyDev
+        </span>
+        <div class="dev-profile">
+          <div class="dev-avatar" aria-hidden="true">TD</div>
+          <div class="dev-info">
+            <h3 id="built-by-heading">Anthony Michael</h3>
+            <p>@TonyDev · Web &amp; Mobile Developer</p>
+          </div>
+        </div>
+        <p class="dev-bio">
+          I'm a frontend developer with a passion for building tools that solve
+          creators,startups, individual business owners problems. Idea-Engne was born from my own frustration with blank content calendars.
+          This project showcases my HTML, CSS, and JavaScript skills, built from scratch with
+          performance, accessibility, and user experience at the forefront. With love enjoy idea-engne❤️
         </p>
-        <div class="testimonial-author">
-          <img src="https://i.pravatar.cc/150?img=25" alt="Kate T. - Beauty Content Creator" class="author-photo" loading="lazy">
-          <div class="author-info">
-            <strong>Kate T.</strong>
-            <span>Beauty Creator · 160K Instagram</span>
-          </div>
-          <i class="fas fa-check-circle verified-badge"></i>
-        </div>
-      </div>
-
-      <div class="testimonial-card fade-in stagger-1">
-        <div class="testimonial-stars">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i>
-          <i class="fas fa-star"></i><i class="fas fa-star"></i>
-          <i class="far fa-star"></i>
-        </div>
-        <p class="testimonial-text">
-          "I was skeptical at first, but after one session I had 30 genuinely good ideas — not the vague 'share your story' type. Specific, actionable, ready-to-post ideas. My team uses it every Monday."
-        </p>
-        <div class="testimonial-author">
-          <img src="https://i.pravatar.cc/150?img=12" alt="Marcus W. - Marketing Manager" class="author-photo" loading="lazy">
-          <div class="author-info">
-            <strong>Marcus W.</strong>
-            <span>Marketing Manager · B2B SaaS</span>
-          </div>
-          <i class="fas fa-check-circle verified-badge"></i>
-        </div>
-      </div>
-
-      <div class="testimonial-card fade-in stagger-2">
-        <div class="testimonial-stars">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i>
-          <i class="fas fa-star"></i><i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <p class="testimonial-text">
-          "I used to dread content planning day. Now I actually look forward to it. 20 minutes on Sunday, and my entire week is mapped out. The ideas are creative, fresh, and always relevant to what my audience loves."
-        </p>
-        <div class="testimonial-author">
-          <img src="https://i.pravatar.cc/150?img=44" alt="Priya D. - Business Coach" class="author-photo" loading="lazy">
-          <div class="author-info">
-            <strong>Priya D.</strong>
-            <span>Business Coach · 92K TikTok</span>
-          </div>
-          <i class="fas fa-check-circle verified-badge"></i>
-        </div>
-      </div>
-
-      <div class="testimonial-card fade-in stagger-3">
-        <div class="testimonial-stars">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i>
-          <i class="fas fa-star"></i><i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <p class="testimonial-text">
-          "If you're a solopreneur trying to manage content AND your business, Idea-Engne is a no-brainer. I went from posting 3× a month to every day. My DMs have never been busier."
-        </p>
-        <div class="testimonial-author">
-          <img src="https://i.pravatar.cc/150?img=33" alt="Diego R. - Freelance Designer" class="author-photo" loading="lazy">
-          <div class="author-info">
-            <strong>Diego R.</strong>
-            <span>Freelance Designer · Solopreneur</span>
-          </div>
-          <i class="fas fa-check-circle verified-badge"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== PRICING ==================== -->
-<section id="pricing">
-  <div class="container">
-    <div class="pricing-header fade-in">
-      <span class="section-tag">
-        <i class="fas fa-tag"></i> Simple Pricing
-      </span>
-      <h2 class="section-title">Start free. Upgrade when ready.</h2>
-      <p class="section-subtitle">No hidden fees. Cancel any time. All plans include a 7-day free trial.</p>
-    </div>
-
-    <div class="pricing-grid">
-      <div class="pricing-card fade-in stagger-1">
-        <div class="plan-name">Starter</div>
-        <div class="plan-price"><sup>$</sup>0<span>/mo</span></div>
-        <div class="plan-desc">Perfect for getting started and testing the waters.</div>
-        <ul class="plan-features">
-          <li><i class="fas fa-check"></i><span>10 ideas per session</span></li>
-          <li><i class="fas fa-check"></i><span>3 sessions per month</span></li>
-          <li><i class="fas fa-check"></i><span>Instagram & LinkedIn</span></li>
-          <li><i class="fas fa-check"></i><span>Basic idea vault (10 saves)</span></li>
-          <li class="no"><i class="fas fa-times"></i><span>Brand voice customization</span></li>
-          <li class="no"><i class="fas fa-times"></i><span>Export to Notion/Sheets</span></li>
-        </ul>
-        <button class="plan-cta btn-outline cta-trigger">Get Started Free</button>
-      </div>
-
-      <div class="pricing-card popular fade-in stagger-2">
-        <div class="popular-badge">⚡ Most Popular</div>
-        <div class="plan-name">Creator</div>
-        <div class="plan-price"><sup>$</sup>19<span>/mo</span></div>
-        <div class="plan-desc">For creators who post consistently and want maximum results.</div>
-        <ul class="plan-features">
-          <li><i class="fas fa-check"></i><span>30 ideas per session</span></li>
-          <li><i class="fas fa-check"></i><span>Unlimited sessions</span></li>
-          <li><i class="fas fa-check"></i><span>All 5 platforms</span></li>
-          <li><i class="fas fa-check"></i><span>Unlimited idea vault</span></li>
-          <li><i class="fas fa-check"></i><span>Brand voice customization</span></li>
-          <li><i class="fas fa-check"></i><span>Export to Notion/Sheets</span></li>
-        </ul>
-        <button class="plan-cta btn-primary cta-trigger">Start 7-Day Trial</button>
-      </div>
-
-      <div class="pricing-card fade-in stagger-3">
-        <div class="plan-name">Team</div>
-        <div class="plan-price"><sup>$</sup>49<span>/mo</span></div>
-        <div class="plan-desc">For agencies and teams managing multiple brand accounts.</div>
-        <ul class="plan-features">
-          <li><i class="fas fa-check"></i><span>Everything in Creator</span></li>
-          <li><i class="fas fa-check"></i><span>Up to 5 team members</span></li>
-          <li><i class="fas fa-check"></i><span>5 brand profiles</span></li>
-          <li><i class="fas fa-check"></i><span>Team idea vault & sharing</span></li>
-          <li><i class="fas fa-check"></i><span>Priority support</span></li>
-          <li><i class="fas fa-check"></i><span>White-label exports</span></li>
-        </ul>
-        <button class="plan-cta btn-outline cta-trigger">Start 7-Day Trial</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== FAQ ==================== -->
-<section id="faq">
-  <div class="faq-inner">
-    <div class="faq-header fade-in">
-      <span class="section-tag">
-        <i class="fas fa-question-circle"></i> FAQ
-      </span>
-      <h2 class="section-title">Questions? We've got answers.</h2>
-    </div>
-
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-question">
-          How is Idea-Engne different from ChatGPT?
-          <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            ChatGPT is a general-purpose AI. Idea-Engne is purpose-built for social media content creators.
-            It's trained specifically on high-performing content patterns, understands platform nuances, 
-            lets you save your brand profile, and generates 30 ideas at once — not one prompt at a time. 
-            Think of it as a specialized co-pilot, not a general assistant.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question">
-          Do the ideas actually sound like me, or are they generic?
-          <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            That's exactly what makes Idea-Engne different. 
-            When you set up your profile with your niche, audience details, and brand voice (educational, entertaining, provocative, etc.),
-            the AI uses those parameters for every generation.
-            The ideas are specific to your world, not recycled from a template library.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question">
-          Which social media platforms does it support?
-          <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Idea-Engne currently supports Instagram (Reels, Stories, Feed posts), 
-            LinkedIn (articles, posts, carousels), TikTok, Twitter/X, and YouTube (Shorts and long-form). 
-            Each idea is tagged with the best-fit platform and format recommendation.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question">
-          Can I try it before paying?
-          <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Absolutely. The Starter plan is completely free forever — 10 ideas per session, 3 sessions per month, no credit card required. Paid plans include a 7-day free trial with full access, and you can cancel any time, no questions asked.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question">
-          What if I don't like the generated ideas?
-          <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Regenerate with a click. You can refine your niche description, adjust the tone, or add context like trending topics or upcoming events. 
-            Each generation is unique, so you'll always get fresh ideas. Most creators find a few gems in every batch worth building on.
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BUILT BY  -->
-<section id="built-by">
-  <div class="built-by-inner container">
-    <!-- Developer Card -->
-    <div class="dev-card fade-in-left">
-      <span class="dev-tag">
-        <i class="fas fa-code"></i> Built by Tonydev
-      </span>
-      <div class="dev-profile">
-        <div class="dev-avatar">TD</div>
-        <div class="dev-info">
-          <h3>Anthony Michael</h3>
-          <p>@TonyDev · Web & Mobile Developer</p>
-        </div>
-      </div>
-      <p class="dev-bio">
-        I'm a frontend developer in training with a passion for building tools that solve real creator problems.
-        Idea-Engne was born from my own frustration with blank content calendars. 
-        This project showcases my HTML, CSS, and JavaScript skills — built from scratch with performance, 
-        accessibility, and user experience at the forefront.
-      </p>
-      <div class="dev-links">
-        <a href="https://github.com/tonydev" target="_blank" rel="noopener noreferrer" class="dev-link">
-          <i class="fab fa-github"></i> GitHub
-        </a>
-        <a href="https://www.linkedin.com/in/anthony-chuksmichael/" target="_blank" rel="noopener noreferrer" class="dev-link">
-          <i class="fab fa-linkedin"></i> LinkedIn
-        </a>
-        <a href="https://twitter.com/tonydev" target="_blank" rel="noopener noreferrer" class="dev-link">
-          <i class="fab fa-twitter"></i> Twitter
-        </a>
-      </div>
-    </div>
-
-    <!-- Tech Stack -->
-    <div class="tech-stack-side">
-      <h3>Built With</h3>
-      <p>Crafted with modern, production-grade web technologies no frameworks, no bloat. Just clean, semantic, accessible code.</p>
-
-      <div class="tech-grid">
-        <div class="tech-badge">
-          <div class="tech-icon html"><i class="fab fa-html5"></i></div>
-          <div class="tech-info">
-            <strong>HTML5</strong>
-            <span>Semantic markup & accessibility</span>
-          </div>
-        </div>
-
-        <div class="tech-badge">
-          <div class="tech-icon css"><i class="fab fa-css3-alt"></i></div>
-          <div class="tech-info">
-            <strong>CSS3</strong>
-            <span>Grid, Flexbox, Custom Properties</span>
-          </div>
-        </div>
-
-        <div class="tech-badge">
-          <div class="tech-icon js"><i class="fab fa-js"></i></div>
-          <div class="tech-info">
-            <strong>JavaScript ES6+</strong>
-            <span>Classes, OOP, Intersection Observer</span>
-          </div>
-        </div>
-
-        <div class="tech-badge">
-          <div class="tech-icon fa"><i class="fas fa-icons"></i></div>
-          <div class="tech-info">
-            <strong>Font Awesome 6</strong>
-            <span>Icon system</span>
-          </div>
-        </div>
-
-        <div class="tech-badge">
-          <div class="tech-icon gsm"><i class="fas fa-font"></i></div>
-          <div class="tech-info">
-            <strong>Google Fonts</strong>
-            <span>Inter + Source Sans 3 typography</span>
-          </div>
-        </div>
-
-        <div class="tech-badge">
-          <div class="tech-icon api"><i class="fas fa-eye"></i></div>
-          <div class="tech-info">
-            <strong>Intersection Observer</strong>
-            <span>Performant scroll animations</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA SECTION  -->
-<section id="cta-section">
-  <div class="cta-inner">
-    <span class="section-tag">
-      <i class="fas fa-rocket"></i> Get Started Today
-    </span>
-    <h2>Stop Running Out<br>of <span class="cta-orange">Content Ideas.</span></h2>
-    <p>Join 12,000+ creators who post every day without creative burnout.</p>
-
-    <div class="cta-form">
-      <input type="email" class="cta-email-input" id="ctaEmailMain" placeholder="Enter your email...">
-      <button class="btn-accent cta-trigger">Start Free →</button>
-    </div>
-    <p class="cta-note">No credit card · Instant access · Cancel any time</p>
-  </div>
-</section>
-
-<!--FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="#hero" class="brand">
-          <div class="brand-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" stroke-width="2" fill="none"/>
-            </svg>
-          </div>
-          Idea-Engne
-        </a>
-        <p>AI-powered social media idea generator for creators, coaches, and founders who refuse to run out of content.</p>
-        <div class="footer-social">
-          <a href="https://twitter.com/tonydev" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-            <i class="fab fa-twitter"></i>
+        <div class="dev-links">
+          <a href="https://github.com/TonytheDev01" target="_blank" rel="noopener noreferrer" class="dev-link">
+            <i class="fab fa-github" aria-hidden="true"></i> GitHub
           </a>
-          <a href="https://www.linkedin.com/in/anthony-chuksmichael/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <i class="fab fa-linkedin-in"></i>
+          <a href="https://www.linkedin.com/in/anthony-chuksmichael/" target="_blank" rel="noopener noreferrer" class="dev-link">
+            <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
           </a>
-          <a href="https://github.com/TonytheDev01" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <i class="fab fa-github"></i>
+          <a href="https://twitter.com/tonydev01" target="_blank" rel="noopener noreferrer" class="dev-link">
+            <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter / X
           </a>
         </div>
       </div>
 
-      <div class="footer-col">
-        <h4>Product</h4>
-        <ul>
-          <li><a href="#how-it-works">How it Works</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#ui-preview">Preview</a></li>
-          <li><a href="#">Changelog</a></li>
-        </ul>
+      <!-- Tech Stack -->
+      <div class="tech-stack-side fade-in-right">
+        <h3>Built With</h3>
+        <p>Crafted with modern, production-grade web technologies — no frameworks, no bloat.
+           Just clean, semantic, accessible code.</p>
+
+        <div class="tech-grid">
+          <div class="tech-badge">
+            <div class="tech-icon html" aria-hidden="true"><i class="fab fa-html5"></i></div>
+            <div class="tech-info">
+              <strong>HTML5</strong>
+              <span>Semantic markup &amp; accessibility</span>
+            </div>
+          </div>
+          <div class="tech-badge">
+            <div class="tech-icon css" aria-hidden="true"><i class="fab fa-css3-alt"></i></div>
+            <div class="tech-info">
+              <strong>CSS3</strong>
+              <span>Grid, Flexbox, Custom Properties</span>
+            </div>
+          </div>
+          <div class="tech-badge">
+            <div class="tech-icon js" aria-hidden="true"><i class="fab fa-js"></i></div>
+            <div class="tech-info">
+              <strong>JavaScript ES6+</strong>
+              <span>Classes, OOP, Intersection Observer</span>
+            </div>
+          </div>
+          <div class="tech-badge">
+            <div class="tech-icon fa" aria-hidden="true"><i class="fas fa-icons"></i></div>
+            <div class="tech-info">
+              <strong>Font Awesome 6</strong>
+              <span>Icon system</span>
+            </div>
+          </div>
+          <div class="tech-badge">
+            <div class="tech-icon gsm" aria-hidden="true"><i class="fas fa-font"></i></div>
+            <div class="tech-info">
+              <strong>Google Fonts</strong>
+              <span>Inter + Source Sans 3</span>
+            </div>
+          </div>
+          <div class="tech-badge">
+            <div class="tech-icon api" aria-hidden="true"><i class="fas fa-eye"></i></div>
+            <div class="tech-info">
+              <strong>Intersection Observer</strong>
+              <span>Performant scroll animations</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="footer-col">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Creator Handbook</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#">API Docs</a></li>
-          <li><a href="#">Status</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="#built-by">About the Builder</a></li>
-          <li><a href="https://github.com/TonytheDev01" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </div>
     </div>
+  </section>
 
-    <div class="footer-bottom">
-      <span>© 2025 Idea-Engne. Built with ❤️ by <a href="https://github.com/TonytheDev01">Anthony Michael (TonyDev)</a>.</span>
-      <span>
-        <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Cookies</a>
+
+       <!-- CTA SECTION -->
+  <section id="cta-section" aria-labelledby="cta-heading">
+    <div class="cta-inner">
+      <span class="section-tag">
+        <i class="fas fa-rocket" aria-hidden="true"></i> Get Started Today
       </span>
-    </div>
-  </div>
-</footer>
+      <h2 id="cta-heading">
+        Stop Running Out<br>of <span class="cta-orange">Content Ideas.</span>
+      </h2>
+      <p>Join 10,000+ creators who post every day without creative burnout.</p>
 
-<!-- ==================== CTA MODAL ==================== -->
-<div class="cta-modal" id="ctaModal" role="dialog" aria-labelledby="modalHeading" aria-modal="true">
-  <div class="cta-modal-overlay"></div>
-  <div class="cta-modal-box">
-    <button class="modal-close" aria-label="Close modal">
-      <i class="fas fa-times"></i>
-    </button>
-
-    <div class="modal-header">
-      <div class="modal-icon">⚡</div>
-      <h2 id="modalHeading">Start Generating Ideas</h2>
-      <p>Join 12,000+ creators. Get 10 free ideas instantly.</p>
-    </div>
-
-    <form class="modal-form" id="ctaModalForm" novalidate>
-      <div class="form-group">
-        <label for="modalEmail">Email Address</label>
-        <input type="email" id="modalEmail" placeholder="you@example.com" required autocomplete="email">
-        <span class="form-error" id="emailError" role="alert"></span>
+      <div class="cta-form">
+        <label for="ctaEmailMain" class="sr-only">Email address</label>
+        <input type="email" class="cta-email-input" id="ctaEmailMain"
+               placeholder="Enter your email…" autocomplete="email">
+        <button class="btn-accent cta-trigger" type="button">Start Free →</button>
       </div>
-      <div class="form-group">
-        <label for="modalNiche">Your Niche <span style="color:var(--text-light);font-weight:400;">(optional)</span></label>
-        <input type="text" id="modalNiche" placeholder="e.g., Fitness coaching for moms">
+      <p class="cta-note">No credit card · Instant access · Cancel any time</p>
+    </div>
+  </section>
+
+
+       <!-- FOOTER -->
+  <footer aria-label="Site footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <a href="#hero" class="brand" aria-label="Idea-Engne home">
+            <div class="brand-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+                      stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            Idea-Engne
+          </a>
+          <p>AI-powered social media idea generator for creators, coaches, and founders
+             who refuse to run out of content.</p>
+          <div class="footer-social">
+            <a href="https://twitter.com/tonydev01" class="social-icon"
+               target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
+              <i class="fab fa-x-twitter" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/anthony-chuksmichael/" class="social-icon"
+               target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+            </a>
+            <a href="https://github.com/TonytheDev01" class="social-icon"
+               target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <i class="fab fa-github" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#how-it-works">How it Works</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#ui-preview">Preview</a></li>
+            <li><a href="#">Changelog</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Creator Handbook</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#">API Docs</a></li>
+            <li><a href="#">Status</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#built-by">About the Builder</a></li>
+            <li><a href="https://github.com/TonytheDev01" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+
       </div>
-      <button type="submit" class="modal-submit" id="modalSubmitBtn">
-        Get My Free Ideas →
+
+      <div class="footer-bottom">
+        <span>
+          &copy; 2026 Idea-Engne. Built with ❤️ by
+          <a href="https://github.com/TonytheDev01" target="_blank" rel="noopener noreferrer">
+            Anthony Michael (TonyDev)
+          </a>.
+        </span>
+        <span>
+          <a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">Cookies</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+
+       <!-- CTA MODAL -->
+  <div class="cta-modal" id="ctaModal"
+       role="dialog"
+       aria-labelledby="modalHeading"
+       aria-modal="true"
+       aria-hidden="true">
+
+    <div class="cta-modal-overlay"></div>
+
+    <div class="cta-modal-box">
+      <button class="modal-close" type="button" aria-label="Close modal">
+        <i class="fas fa-times" aria-hidden="true"></i>
       </button>
-      <p class="modal-note">No credit card required. Instant access.</p>
-    </form>
 
-    <div class="modal-success" id="modalSuccess">
-      <div class="success-icon-circle"><i class="fas fa-check"></i></div>
-      <h3>Welcome on-board! 🎉</h3>
-      <p>Check your email for your first 10 AI-generated content ideas.</p>
-      <button class="modal-submit" id="modalGotItBtn">Got it, let's go!</button>
+      <div class="modal-header">
+        <div class="modal-icon" aria-hidden="true">⚡</div>
+        <h2 id="modalHeading">Start Generating Ideas</h2>
+        <p>Join 10,000+ creators. Get 15 free ideas instantly.</p>
+      </div>
+
+      <form class="modal-form" id="ctaModalForm" novalidate>
+        <div class="form-group">
+          <label for="modalEmail">Email Address</label>
+          <input
+            type="email"
+            id="modalEmail"
+            name="email"
+            placeholder="you@example.com"
+            required
+            autocomplete="email"
+            aria-required="true"
+            aria-describedby="emailError"
+          >
+          <!-- FIX: role="alert" + aria-live="polite" so error is announced to screen readers -->
+          <span class="form-error" id="emailError" role="alert" aria-live="polite"></span>
+        </div>
+        <div class="form-group">
+          <label for="modalNiche">
+            Your Niche
+            <span style="color:var(--text-light);font-weight:400;">(optional)</span>
+          </label>
+          <input
+            type="text"
+            id="modalNiche"
+            name="niche"
+            placeholder="e.g., Fitness coaching for moms"
+            autocomplete="off"
+          >
+        </div>
+        <button type="submit" class="modal-submit" id="modalSubmitBtn">
+          Get My Free Ideas →
+        </button>
+        <p class="modal-note">No credit card required. Instant access.</p>
+      </form>
+
+      <div class="modal-success" id="modalSuccess" role="status" aria-live="polite">
+        <div class="success-icon-circle" aria-hidden="true">
+          <i class="fas fa-check"></i>
+        </div>
+        <h3>Welcome on-board! 🎉</h3>
+        <p>Check your email for your first 10 AI-generated content ideas.</p>
+        <button class="modal-submit" type="button" id="modalGotItBtn">Got it, let's go!</button>
+      </div>
     </div>
   </div>
-</div>
 
 
- <script src="index.js"></script>
-    
+  <script src="index.js"></script>
 </body>
 </html>
