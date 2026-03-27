@@ -16,12 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
     return; // This page doesn't have mobile menu structure
   }
   
-  // Create backdrop if it doesn't exist
+  // Get backdrop (now in HTML, inside header)
   let backdrop = document.querySelector('.mobile-menu-backdrop');
   if (!backdrop) {
+    // Fallback: create if doesn't exist
     backdrop = document.createElement('div');
     backdrop.className = 'mobile-menu-backdrop';
-    document.body.appendChild(backdrop);
+    mobileMenu.parentElement.insertBefore(backdrop, mobileMenu.nextSibling);
   }
   
   // Create close button in sidebar if it doesn't exist
