@@ -302,7 +302,7 @@ nav[aria-label="Main navigation"] {
   right: 0;
   bottom: 0;
   width: 50vw;
-  height: 60vh;
+  height: 80vh;
   max-width: 30rem;
   background: var(--white);
   padding: 7rem 2rem 3rem;
@@ -407,7 +407,7 @@ nav[aria-label="Main navigation"] {
   font-weight: 700;
 }
 
-.mobile-menu-close {
+/* .mobile-menu-close {
   position: absolute;
   top: 2rem;
   right: 2rem;
@@ -430,6 +430,10 @@ nav[aria-label="Main navigation"] {
   background: var(--primary);
   color: var(--white);
   transform: rotate(90deg);
+} */
+
+.mobile-menu-close {
+  display: none;
 }
 
 .hamburger {
@@ -1177,21 +1181,22 @@ nav[aria-label="Main navigation"] {
 .step-card {
   background: var(--white);
   border-radius: var(--radius-lg);
-  padding: 2.5rem 2rem;
+  padding: 2rem 2rem;
   border: 2px solid var(--accent);
   text-align: center;
+  position: relative;
   box-shadow: 0 0.4rem 1.5rem rgba(0, 0, 0, 0.06);
 }
 
 .step-number {
-  position: absolute;
+  position: relative;
   top: -1.5rem;
   left: 50%;
   transform: translateX(-50%);
   background: var(--primary);
   color: var(--white);
   font-family: var(--font-head);
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   font-weight: 700;
   width: 3.5rem;
   height: 3.5rem;

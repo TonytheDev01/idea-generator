@@ -1,9 +1,6 @@
 'use strict';
 
-// GROQ API CONFIGURATION - PRODUCTION VERSION
-
-const AI_MODEL = 'llama-3.1-8b-instant'; // Fast and reliable
-
+const AI_MODEL = 'llama-3.3-70b-versatile';
 // API Key is loaded from config.js into window.ENV
 
 // USER DATA & AUTH CHECK
@@ -16,7 +13,6 @@ function initializeUser() {
   const storedUserData = localStorage.getItem('ideaEngneUserData');
   
   if (!userEmail || !storedUserData) {
-    // No user logged in - redirect to signup
     window.location.href = 'signup.html';
     return false;
   }
@@ -32,7 +28,6 @@ function initializeUser() {
     return false;
   }
   
-  // ✅ NOW set userData with proper defaults
   userData = {
     subscription: 'free',
     freeIdeasRemaining: 15,
@@ -53,7 +48,6 @@ function initializeUser() {
     userAvatarEl.textContent = initials;
   }
   
-  // Update quota display
   updateQuotaDisplay();
   
   return true;
@@ -82,10 +76,8 @@ function updateQuotaDisplay() {
 // Initialize user on page load
 if (typeof initializeUser === 'function' && !initializeUser()) {
   console.error('User not authenticated, redirecting to signup');
-  // Error already handled in initializeUser()
 }
 
-// DOM Elements - will be initialized in DOMContentLoaded
 let platformTags = null;
 let selectedPlatforms = new Set();
 let form = null;
@@ -99,9 +91,6 @@ let exportBtn = null;
 
 // Initialize app once DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  // ========================================
-  // LOGOUT
-  // ========================================
   const logoutBtn = document.getElementById('logoutBtn');
   if (logoutBtn) {
     logoutBtn.addEventListener('click', () => {
@@ -114,9 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ========================================
   // PLATFORM SELECTION
-  // ========================================
   platformTags = document.querySelectorAll('.platform-tag');
   selectedPlatforms = new Set();
 
@@ -138,9 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ========================================
   // FORM SUBMISSION & AI GENERATION
-  // ========================================
   form = document.getElementById('generatorForm');
   generateBtn = document.getElementById('generateBtn');
   emptyState = document.getElementById('emptyState');
@@ -176,9 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
     await generateIdeas({ niche, audience, tone, platforms: Array.from(selectedPlatforms) });
   });
 
-  // ========================================
   // EXPORT BUTTON
-  // ========================================
   if (exportBtn) {
     exportBtn.addEventListener('click', () => {
       const ideas = JSON.parse(localStorage.getItem('ideaEngneLastIdeas') || '[]');
@@ -221,9 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ========================================
   // RETRY BUTTON
-  // ========================================
   const retryBtn = document.getElementById('retryBtn');
   if (retryBtn) {
     retryBtn.addEventListener('click', () => {
@@ -235,7 +216,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // AI GENERATION FUNCTION - ENHANCED
 async function generateIdeas({ niche, audience, tone, platforms }) {
-  // Try to get API key from window.ENV (set by config.js)
   const GROQ_API_KEY = window.ENV?.GROQ_API_KEY;
   
   // Debug logging
@@ -271,33 +251,39 @@ async function generateIdeas({ niche, audience, tone, platforms }) {
   generateBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
 
   try {
-    // Build enhanced prompt for longer, more detailed ideas
     const platformsText = platforms.map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(', ');
     const audienceText = audience ? `Target audience: ${audience}. ` : '';
     const toneText = tone ? `Brand tone: ${tone}. ` : '';
 
-    const prompt = `You are an expert social media content strategist. Generate exactly ${ideasCount} unique, specific, and actionable content ideas.
+const prompt = `You are an expert social media content strategist and copywriter. Generate exactly ${ideasCount} unique, platform-native, publish-ready content pieces.
 
 Niche: ${niche}
 ${audienceText}${toneText}Platforms: ${platformsText}
 
-IMPORTANT REQUIREMENTS:
-- Each idea should be 2-3 sentences with a clear hook, execution details, and expected outcome
-- Ideas must be SPECIFIC to the niche (not generic advice)
-- Include variety: educational, entertaining, behind-the-scenes, storytelling, trending topics, controversial takes, tutorials
-- Each idea should be actionable - creator should know exactly what to make
-- Ideas should have viral potential - hooks that make people stop scrolling
+CRITICAL REQUIREMENTS:
+- Each idea must be COMPLETE and PUBLISH-READY — the creator should be able to copy and post it immediately with zero editing
+- Write in a natural, human voice that matches the platform culture
+- Content must be specific to the niche, NOT generic advice
+- Include full post copy with line breaks where appropriate
+- Make it scroll-stopping — strong emotional hook, clear value, and a CTA
 
-Return ONLY a valid JSON array with exactly ${ideasCount} objects. Each object MUST have this structure:
+Return ONLY a valid JSON array with exactly ${ideasCount} objects. Each object MUST follow this structure:
 {
-  "idea": "The detailed post idea with hook, execution, and outcome (2-3 sentences, ~40-60 words)",
-  "platform": "instagram" (or linkedin, tiktok, twitter, youtube - lowercase),
-  "format": "Reel" (or Carousel, Story, Thread, Video, Post, Live),
-  "hook": "The opening line or attention grabber (10-15 words)",
-  "cta": "Call-to-action for the post (5-10 words)"
+  "idea": "The FULL post copy exactly as it should be posted. Include the hook as the opening line, 3-5 lines of value-packed body content with line breaks (\\n), and close with the CTA naturally woven in. Minimum 80 words.",
+  "platform": "instagram" (or linkedin, tiktok, twitter, youtube — lowercase, match the platform style),
+  "format": "Reel" (or Carousel, Story, Thread, Video, Post, Live — match what fits the content),
+  "hook": "The opening line only — designed to stop the scroll (10-15 words max)",
+  "cta": "The call-to-action line at the end of the post (8-12 words)"
 }
 
-Return ONLY the JSON array, no other text, no markdown, no explanation.`;
+Platform tone guide:
+- Instagram: Visual storytelling, aspirational, conversational, emojis welcome
+- TikTok: Bold, fast, trend-aware, Gen-Z friendly, punchy
+- LinkedIn: Professional but personal, insight-driven, no fluff
+- Twitter: Sharp, punchy, controversial or witty, under 280 chars for idea
+- YouTube: Educational, searchable title-style hook, detailed value
+
+Return ONLY the JSON array. No markdown, no explanation, no extra text.`;
 
     console.log(`🚀 Calling Groq API for ${ideasCount} ideas...`);
 
@@ -402,9 +388,9 @@ Return ONLY the JSON array, no other text, no markdown, no explanation.`;
     console.log(`✅ Successfully generated ${ideas.length} ideas`);
 
     // Update user data with correct counts
-    userData.totalIdeasGenerated = (userData.totalIdeasGenerated || 0) + ideas.length;  // Increment by actual count
+    userData.totalIdeasGenerated = (userData.totalIdeasGenerated || 0) + ideas.length;  
     if (userData.subscription === 'free') {
-      userData.freeIdeasRemaining = Math.max(0, (userData.freeIdeasRemaining || 0) - 1);  // One generation = one free idea used
+      userData.freeIdeasRemaining = Math.max(0, (userData.freeIdeasRemaining || 0) - 1);  
     }
     
     // Save preferences (ensure preferences object exists)

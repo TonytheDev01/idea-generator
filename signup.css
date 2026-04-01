@@ -83,23 +83,27 @@ body {
   border-radius: 50%;
 }
 
-   /* MAIN CONTAINER */
+  /* main container */
 .signup-container {
   position: relative;
   z-index: 1;
-  min-height: 100vh;
+  min-height: 75vh;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
+  align-items: stretch;
+  padding: 10rem 2rem 4rem;
 }
 
-   /* LEFT SIDE - BRANDING (MOBILE: TOP) */
 .signup-left {
   background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  padding: 3rem 2rem;
+  padding: 3rem;
+  width: 100%;
   color: var(--white);
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .brand-logo {
@@ -267,16 +271,17 @@ body {
    /* RIGHT SIDE - FORM */
 .signup-right {
   flex: 1;
-  padding: 3rem 3rem;
+  padding: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--white);
 }
 
+
 .form-container {
   width: 100%;
-  max-width: 47rem;
+  max-width: 45rem;
   position: relative;
 }
 
@@ -858,17 +863,28 @@ body {
   color: var(--text-mid);
 }
 
-   /* TABLET (768px+) */
+/* TABLET  */
 @media (min-width: 768px) {
   .signup-container {
+    display: flex;
+    justify-content: center;
     flex-direction: row;
+    align-items: stretch; 
+    padding: 15rem 5rem 5rem;
+    min-height: 80vh;
   }
 
   .signup-left {
-    flex: 0 0 40%;
-    padding: 5rem 5rem;
+    flex: 0 0 45%;
+    padding: 3rem;
     justify-content: center;
   }
+
+  .signup-right {
+    flex: 0 0 55%;
+    padding: 3rem;
+  }
+
 
   .signup-hero h1 {
     font-size: 3.2rem;
@@ -892,11 +908,26 @@ body {
   }
 }
 
-   /* DESKTOP (1024px+) */
+/* DESKTOP */
 @media (min-width: 1024px) {
+  .signup-container {
+    display: flex;
+    justify-content: center;
+    max-width: 120rem;
+    margin: 0 auto;
+    min-height: 80vh;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
   .signup-left {
     flex: 0 0 50%;
-    padding: 6rem 5rem;
+    padding: 6rem 6rem;
+  }
+
+  .signup-right {
+    flex: 0 0 50%;
+    padding: 6rem 6rem;
   }
 
   .signup-hero h1 {

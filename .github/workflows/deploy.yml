@@ -25,13 +25,17 @@ jobs:
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: |
-          cat > config.js << EOF
-          'use strict';
-          window.ENV = {
-            GROQ_API_KEY: '${GROQ_API_KEY}',
-            NODE_ENV: 'production'
-          };
-          EOF
+          echo "'use strict';" > config.js
+          echo "window.ENV = {" >> config.js
+          echo "  GROQ_API_KEY: '${GROQ_API_KEY}'," >> config.js
+          echo "  NODE_ENV: 'production'" >> config.js
+          echo "};" >> config.js
+
+      - name: Verify config.js was created
+        run: |
+          echo "=== config.js contents ==="
+          cat config.js
+          echo "=========================="
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
