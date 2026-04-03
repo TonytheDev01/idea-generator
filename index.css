@@ -744,20 +744,19 @@ nav[aria-label="Main navigation"] {
   flex-direction: column;
   gap: 1.3rem;
   margin-top: 3rem;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start; 
+  text-align: left; 
   margin-bottom: 1rem;
 }
 
 .value-prop {
   display: flex;
-  align-items: center;
+  align-items: flex-start; 
   gap: 1rem;
   font-size: 1.5rem;
   color: var(--text-mid);
-  justify-content: center;
+  justify-content: flex-start; 
 }
-
 .value-prop i {
   color: var(--success);
   font-size: 1.6rem;
