@@ -947,3 +947,58 @@ body {
     padding: 2rem;
   }
 }
+
+.password-requirements {
+  display: none;
+  background: var(--off-white);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.4rem 1.6rem;
+  margin-top: 1rem;
+}
+
+.password-requirements.show {
+  display: block;
+}
+
+.req-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.req-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.req-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.4rem;
+  color: var(--text-light);
+  transition: color 0.2s ease;
+}
+
+.req-item i {
+  font-size: 1.4rem;
+  color: var(--text-light);
+  transition: color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.req-item.met {
+  color: var(--success);
+}
+
+.req-item.met i {
+  color: var(--success);
+}
+
+.req-item.unmet i {
+  color: #ef4444;
+}

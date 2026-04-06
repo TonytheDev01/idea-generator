@@ -21,16 +21,205 @@
     </a>
 
     <div class="header-actions">
-      <div class="user-badge">
-        <div class="user-avatar" id="userAvatar">?</div>
-        <span class="user-email" id="userEmail">Loading...</span>
+      <!-- Profile Dropdown -->
+      <div class="profile-dropdown" id="profileDropdown">
+        <button class="profile-trigger" id="profileTrigger" aria-expanded="false">
+          <div class="user-avatar" id="userAvatar">?</div>
+          <span class="user-email" id="userEmail">Loading...</span>
+          <i class="fas fa-chevron-down chevron-icon"></i>
+        </button>
+
+        <div class="dropdown-menu" id="dropdownMenu">
+          <div class="dropdown-header">
+            <div class="dropdown-avatar" id="dropdownAvatar">?</div>
+            <div class="dropdown-user-info">
+              <strong id="dropdownName">User</strong>
+              <span id="dropdownEmail">user@email.com</span>
+              <span class="dropdown-plan" id="dropdownPlan">Free Plan</span>
+            </div>
+          </div>
+
+          <div class="dropdown-divider"></div>
+
+          <button class="dropdown-item" id="settingsBtn">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </button>
+
+          <button class="dropdown-item" id="profileBtn">
+            <i class="fas fa-user-edit"></i>
+            <span>Edit Profile</span>
+          </button>
+
+          <button class="dropdown-item" id="savedIdeasBtn">
+            <i class="fas fa-bookmark"></i>
+            <span>Saved Ideas</span>
+          </button>
+
+          <div class="dropdown-divider"></div>
+
+          <button class="dropdown-item logout-item" id="logoutBtn">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </button>
+        </div>
       </div>
-      <button class="btn-logout" id="logoutBtn">
-        <i class="fas fa-sign-out-alt"></i> Logout
-      </button>
     </div>
   </div>
 </header>
+
+<!-- SETTINGS MODAL -->
+<div class="settings-modal" id="settingsModal">
+  <div class="settings-overlay" id="settingsOverlay"></div>
+  <div class="settings-content">
+    <div class="settings-header">
+      <h2><i class="fas fa-cog"></i> Settings</h2>
+      <button class="settings-close" id="settingsClose">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <div class="settings-tabs">
+      <button class="settings-tab active" data-tab="profile">
+        <i class="fas fa-user"></i> Profile
+      </button>
+      <button class="settings-tab" data-tab="preferences">
+        <i class="fas fa-sliders-h"></i> Preferences
+      </button>
+      <button class="settings-tab" data-tab="account">
+        <i class="fas fa-shield-alt"></i> Account
+      </button>
+    </div>
+
+    <!-- Profile Tab -->
+    <div class="settings-panel active" id="tab-profile">
+      <div class="avatar-upload-section">
+        <div class="avatar-preview" id="avatarPreview">?</div>
+        <div class="avatar-upload-info">
+          <button class="btn-upload-avatar" id="uploadAvatarBtn">
+            <i class="fas fa-camera"></i> Change Photo
+          </button>
+          <input type="file" id="avatarInput" accept="image/*" style="display:none">
+          <span>JPG, PNG up to 2MB</span>
+        </div>
+      </div>
+
+      <div class="settings-form">
+        <div class="settings-field">
+          <label><i class="fas fa-user"></i> Full Name</label>
+          <input type="text" id="settingsName" class="settings-input" placeholder="Your full name">
+        </div>
+
+        <div class="settings-field">
+          <label><i class="fas fa-envelope"></i> Email Address</label>
+          <input type="email" id="settingsEmail" class="settings-input" placeholder="your@email.com" disabled>
+          <span class="field-note">Email cannot be changed</span>
+        </div>
+
+        <div class="settings-field">
+          <label><i class="fas fa-briefcase"></i> Your Niche</label>
+          <input type="text" id="settingsNiche" class="settings-input" placeholder="e.g. Fitness coach, Finance advisor">
+        </div>
+
+        <div class="settings-field">
+          <label><i class="fas fa-users"></i> Target Audience</label>
+          <input type="text" id="settingsAudience" class="settings-input" placeholder="e.g. Working moms aged 30-45">
+        </div>
+
+        <div class="settings-field">
+          <label><i class="fas fa-microphone"></i> Brand Tone</label>
+          <input type="text" id="settingsTone" class="settings-input" placeholder="e.g. Motivational, Educational">
+        </div>
+
+        <button class="btn-save-settings" id="saveProfileBtn">
+          <i class="fas fa-save"></i> Save Changes
+        </button>
+      </div>
+    </div>
+
+    <!-- Preferences Tab -->
+    <div class="settings-panel" id="tab-preferences">
+      <div class="settings-form">
+        <div class="settings-field">
+          <label><i class="fas fa-layer-group"></i> Default Platforms</label>
+          <div class="platform-tags settings-platforms">
+            <div class="platform-tag" data-platform="instagram"><i class="fab fa-instagram"></i> Instagram</div>
+            <div class="platform-tag" data-platform="linkedin"><i class="fab fa-linkedin"></i> LinkedIn</div>
+            <div class="platform-tag" data-platform="tiktok"><i class="fab fa-tiktok"></i> TikTok</div>
+            <div class="platform-tag" data-platform="twitter"><i class="fab fa-twitter"></i> Twitter</div>
+            <div class="platform-tag" data-platform="youtube"><i class="fab fa-youtube"></i> YouTube</div>
+          </div>
+        </div>
+
+        <div class="settings-field">
+          <label><i class="fas fa-moon"></i> Theme</label>
+          <div class="theme-options">
+            <button class="theme-btn active" data-theme="light">
+              <i class="fas fa-sun"></i> Light
+            </button>
+            <button class="theme-btn" data-theme="dark">
+              <i class="fas fa-moon"></i> Dark
+            </button>
+          </div>
+        </div>
+
+        <button class="btn-save-settings" id="savePreferencesBtn">
+          <i class="fas fa-save"></i> Save Preferences
+        </button>
+      </div>
+    </div>
+
+    <!-- Account Tab -->
+    <div class="settings-panel" id="tab-account">
+      <div class="settings-form">
+        <div class="account-info-card">
+          <div class="account-stat">
+            <i class="fas fa-lightbulb"></i>
+            <div>
+              <strong id="statIdeas">0</strong>
+              <span>Ideas Generated</span>
+            </div>
+          </div>
+          <div class="account-stat">
+            <i class="fas fa-calendar"></i>
+            <div>
+              <strong id="statJoined">-</strong>
+              <span>Member Since</span>
+            </div>
+          </div>
+          <div class="account-stat">
+            <i class="fas fa-crown"></i>
+            <div>
+              <strong id="statPlan">Free</strong>
+              <span>Current Plan</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="settings-field">
+          <label><i class="fas fa-lock"></i> Change Password</label>
+          <input type="password" id="newPassword" class="settings-input" placeholder="New password">
+        </div>
+        <div class="settings-field">
+          <input type="password" id="confirmPassword" class="settings-input" placeholder="Confirm new password">
+        </div>
+
+        <button class="btn-save-settings" id="savePasswordBtn">
+          <i class="fas fa-key"></i> Update Password
+        </button>
+
+        <div class="danger-zone">
+          <h4><i class="fas fa-exclamation-triangle"></i> Danger Zone</h4>
+          <button class="btn-danger" id="deleteAccountBtn">
+            <i class="fas fa-trash"></i> Delete Account
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 
 <!-- Main Container -->
 <div class="main-container">
@@ -176,8 +365,9 @@
 </div>
 
 <!-- Load config first, then app -->
-   <script src="config.js"></script>
-   <script src="app.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="supabase.js"></script>
+<script src="app.js"></script>
 </body>
 </html>

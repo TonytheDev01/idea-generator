@@ -11,12 +11,10 @@
   <link rel="stylesheet" href="signup.css">
 </head>
 <body>
-  <!-- Background Decoration -->
   <div class="bg-decoration"></div>
 
-  <!-- Main Container -->
   <div class="signup-container">
-    <!-- Left Side - Branding & Benefits -->
+    <!-- Left Side -->
     <div class="signup-left">
       <a href="index.html" class="brand-logo">
         <div class="brand-icon">
@@ -34,29 +32,21 @@
 
       <div class="signup-benefits">
         <div class="benefit-item">
-          <div class="benefit-icon">
-            <i class="fas fa-bolt"></i>
-          </div>
+          <div class="benefit-icon"><i class="fas fa-bolt"></i></div>
           <div class="benefit-text">
             <strong>15 Free Ideas</strong>
             <span>Get started instantly with your first batch</span>
           </div>
         </div>
-
         <div class="benefit-item">
-          <div class="benefit-icon">
-            <i class="fas fa-clock"></i>
-          </div>
+          <div class="benefit-icon"><i class="fas fa-clock"></i></div>
           <div class="benefit-text">
             <strong>60-Second Setup</strong>
             <span>No credit card, no commitment required</span>
           </div>
         </div>
-
         <div class="benefit-item">
-          <div class="benefit-icon">
-            <i class="fas fa-shield-alt"></i>
-          </div>
+          <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
           <div class="benefit-text">
             <strong>Cancel Anytime</strong>
             <span>Full control over your subscription</span>
@@ -84,18 +74,15 @@
       </div>
     </div>
 
-    <!-- Right Side - Form -->
+    <!-- Right Side -->
     <div class="signup-right">
       <div class="form-container">
-        <!-- Tab Switcher -->
         <div class="auth-tabs">
           <button class="auth-tab active" data-tab="signup">
-            <i class="fas fa-user-plus"></i>
-            Create Account
+            <i class="fas fa-user-plus"></i> Create Account
           </button>
           <button class="auth-tab" data-tab="login">
-            <i class="fas fa-sign-in-alt"></i>
-            Sign In
+            <i class="fas fa-sign-in-alt"></i> Sign In
           </button>
         </div>
 
@@ -108,60 +95,69 @@
 
           <div class="form-group">
             <label for="signupName">
-              <i class="fas fa-user"></i>
-              Full Name
+              <i class="fas fa-user"></i> Full Name
             </label>
-            <input 
-              type="text" 
-              id="signupName" 
-              class="form-input" 
-              placeholder=" your fullname here"
-              required
-              autocomplete="name"
-            >
+            <input type="text" id="signupName" class="form-input"
+              placeholder="Your full name" required autocomplete="name">
             <span class="form-error" id="nameError"></span>
           </div>
 
           <div class="form-group">
             <label for="signupEmail">
-              <i class="fas fa-envelope"></i>
-              Email Address
+              <i class="fas fa-envelope"></i> Email Address
             </label>
-            <input 
-              type="email" 
-              id="signupEmail" 
-              class="form-input" 
-              placeholder="you@example.com"
-              required
-              autocomplete="email"
-            >
+            <input type="email" id="signupEmail" class="form-input"
+              placeholder="you@example.com" required autocomplete="email">
             <span class="form-error" id="emailError"></span>
           </div>
 
           <div class="form-group">
             <label for="signupPassword">
-              <i class="fas fa-lock"></i>
-              Password
+              <i class="fas fa-lock"></i> Password
             </label>
             <div class="password-wrapper">
-              <input 
-                type="password" 
-                id="signupPassword" 
-                class="form-input" 
-                placeholder="Min. 8 characters"
-                required
-                autocomplete="new-password"
-              >
+              <input type="password" id="signupPassword" class="form-input"
+                placeholder="Create a strong password" required autocomplete="new-password">
               <button type="button" class="password-toggle" id="toggleSignupPassword">
                 <i class="fas fa-eye"></i>
               </button>
             </div>
+
+            <!-- Password Strength Bar -->
             <div class="password-strength" id="passwordStrength">
               <div class="strength-bar">
-                <div class="strength-fill"></div>
+                <div class="strength-fill" id="strengthFill"></div>
               </div>
-              <span class="strength-text">Password strength</span>
+              <span class="strength-text" id="strengthText">Password strength</span>
             </div>
+
+            <!-- ✅ Live Password Requirements Checklist -->
+            <div class="password-requirements" id="passwordRequirements">
+              <p class="req-title">Your password needs:</p>
+              <ul class="req-list">
+                <li class="req-item" id="req-length">
+                  <i class="fas fa-times-circle"></i>
+                  <span>At least 8 characters</span>
+                </li>
+                <li class="req-item" id="req-upper">
+                  <i class="fas fa-times-circle"></i>
+                  <span>One uppercase letter (A-Z)</span>
+                </li>
+                <li class="req-item" id="req-lower">
+                  <i class="fas fa-times-circle"></i>
+                  <span>One lowercase letter (a-z)</span>
+                </li>
+                <li class="req-item" id="req-number">
+                  <i class="fas fa-times-circle"></i>
+                  <span>One number (0-9)</span>
+                </li>
+                <li class="req-item" id="req-special">
+                  <i class="fas fa-times-circle"></i>
+                  <span>One special character (!@#$%)</span>
+                </li>
+              </ul>
+            </div>
+
             <span class="form-error" id="passwordError"></span>
           </div>
 
@@ -170,29 +166,25 @@
               <input type="checkbox" id="termsCheckbox" required>
               <span class="checkmark"></span>
               <span class="checkbox-text">
-                I agree to the <a href="#" class="link">Terms of Service</a> and <a href="#" class="link">Privacy Policy</a>
+                I agree to the <a href="#" class="link">Terms of Service</a> and
+                <a href="#" class="link">Privacy Policy</a>
               </span>
             </label>
             <span class="form-error" id="termsError"></span>
           </div>
 
           <button type="submit" class="btn-submit" id="signupBtn">
-            <i class="fas fa-rocket"></i>
-            Create My Free Account
+            <i class="fas fa-rocket"></i> Create My Free Account
           </button>
 
-          <div class="form-divider">
-            <span>or continue with</span>
-          </div>
+          <div class="form-divider"><span>or continue with</span></div>
 
           <div class="social-auth">
-            <button type="button" class="btn-social google">
-              <i class="fab fa-google"></i>
-              Google
+            <button type="button" class="btn-social google" id="googleSignup">
+              <i class="fab fa-google"></i> Google
             </button>
-            <button type="button" class="btn-social github">
-              <i class="fab fa-github"></i>
-              GitHub
+            <button type="button" class="btn-social github" id="githubSignup">
+              <i class="fab fa-github"></i> GitHub
             </button>
           </div>
         </form>
@@ -206,34 +198,20 @@
 
           <div class="form-group">
             <label for="loginEmail">
-              <i class="fas fa-envelope"></i>
-              Email Address
+              <i class="fas fa-envelope"></i> Email Address
             </label>
-            <input 
-              type="email" 
-              id="loginEmail" 
-              class="form-input" 
-              placeholder="you@example.com"
-              required
-              autocomplete="email"
-            >
+            <input type="email" id="loginEmail" class="form-input"
+              placeholder="you@example.com" required autocomplete="email">
             <span class="form-error" id="loginEmailError"></span>
           </div>
 
           <div class="form-group">
             <label for="loginPassword">
-              <i class="fas fa-lock"></i>
-              Password
+              <i class="fas fa-lock"></i> Password
             </label>
             <div class="password-wrapper">
-              <input 
-                type="password" 
-                id="loginPassword" 
-                class="form-input" 
-                placeholder="Enter your password"
-                required
-                autocomplete="current-password"
-              >
+              <input type="password" id="loginPassword" class="form-input"
+                placeholder="Enter your password" required autocomplete="current-password">
               <button type="button" class="password-toggle" id="toggleLoginPassword">
                 <i class="fas fa-eye"></i>
               </button>
@@ -247,26 +225,21 @@
               <span class="checkmark"></span>
               <span class="checkbox-text">Remember me</span>
             </label>
-            <a href="#" class="link">Forgot password?</a>
+            <a href="#" class="link" id="forgotPasswordLink">Forgot password?</a>
           </div>
 
           <button type="submit" class="btn-submit" id="loginBtn">
-            <i class="fas fa-sign-in-alt"></i>
-            Sign In to Dashboard
+            <i class="fas fa-sign-in-alt"></i> Sign In to Dashboard
           </button>
 
-          <div class="form-divider">
-            <span>or continue with</span>
-          </div>
+          <div class="form-divider"><span>or continue with</span></div>
 
           <div class="social-auth">
-            <button type="button" class="btn-social google">
-              <i class="fab fa-google"></i>
-              Google
+            <button type="button" class="btn-social google" id="googleLogin">
+              <i class="fab fa-google"></i> Google
             </button>
-            <button type="button" class="btn-social github">
-              <i class="fab fa-github"></i>
-              GitHub
+            <button type="button" class="btn-social github" id="githubLogin">
+              <i class="fab fa-github"></i> GitHub
             </button>
           </div>
         </form>
@@ -278,8 +251,8 @@
           <div class="success-icon">
             <i class="fas fa-check-circle"></i>
           </div>
-          <h3>Account Created Successfully! 🎉</h3>
-          <p>Welcome to Idea-Engne! You're all set to start generating amazing content ideas.</p>
+          <h3>Account Created! 🎉</h3>
+          <p>Welcome to Idea-Engne! Check your email to verify your account, then start generating ideas.</p>
           <div class="success-benefits">
             <div class="success-item">
               <i class="fas fa-gift"></i>
@@ -291,8 +264,7 @@
             </div>
           </div>
           <button class="btn-success" id="continueBtn">
-            <i class="fas fa-arrow-right"></i>
-            Continue to Homepage
+            <i class="fas fa-arrow-right"></i> Go to Dashboard
           </button>
         </div>
       </div>
@@ -302,9 +274,12 @@
   <!-- Loading Overlay -->
   <div class="loading-overlay" id="loadingOverlay">
     <div class="loading-spinner"></div>
-    <p>Creating your account...</p>
+    <p id="loadingText">Creating your account...</p>
   </div>
 
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
   <script src="signup.js"></script>
 </body>
 </html>
