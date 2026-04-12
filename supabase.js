@@ -10,14 +10,13 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 const { createClient } = supabase;
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// AUTH FUNCTIONS
+// ─── AUTH FUNCTIONS ───────────────────────────────────────────
+
 async function signUp(name, email, password) {
   const { data, error } = await supabaseClient.auth.signUp({
     email,
     password,
-    options: {
-      data: { name }
-    }
+    options: { data: { name } }
   });
   if (error) throw error;
   return data;
@@ -42,7 +41,8 @@ async function getCurrentUser() {
   return user;
 }
 
-// PROFILE FUNCTIONS
+// ─── PROFILE FUNCTIONS ────────────────────────────────────────
+
 async function getProfile(userId) {
   const { data, error } = await supabaseClient
     .from('profiles')
@@ -82,7 +82,8 @@ async function uploadAvatar(userId, file) {
   return data.publicUrl;
 }
 
-// TESTIMONIALS FUNCTIONS
+// ─── TESTIMONIALS FUNCTIONS ───────────────────────────────────
+
 async function getApprovedTestimonials() {
   const { data, error } = await supabaseClient
     .from('testimonials')
@@ -94,21 +95,24 @@ async function getApprovedTestimonials() {
   return data;
 }
 
-async function submitTestimonial(userId, testimonialData) {
+// Single submitTestimonial — accepts (userId, name, rating, message)
+// FIX: removed duplicate that was causing SyntaxError and breaking all generation
+async function submitTestimonial(userId, name, rating, message) {
   const { data, error } = await supabaseClient
     .from('testimonials')
-    .insert({
+    .insert([{
       user_id: userId,
-      ...testimonialData,
-      approved: false // needs manual approval
-    })
-    .select()
-    .single();
+      name,
+      rating,
+      message,
+      approved: false
+    }]);
   if (error) throw error;
   return data;
 }
 
-// PLATFORM STATS FUNCTIONS
+// ─── PLATFORM STATS FUNCTIONS ────────────────────────────────
+
 async function getPlatformStats() {
   const { data, error } = await supabaseClient
     .from('platform_stats')
@@ -130,3 +134,58 @@ async function incrementIdeasGenerated(count) {
       .eq('id', 1);
   }
 }
+
+// ─── SAVED IDEAS FUNCTIONS ────────────────────────────────────
+
+async function saveIdea(userId, idea) {
+  const { data, error } = await supabaseClient
+    .from('saved_ideas')
+    .insert([{
+      user_id: userId,
+      idea: idea.idea,
+      platform: idea.platform,
+      format: idea.format,
+      hook: idea.hook,
+      cta: idea.cta
+    }]);
+  if (error) throw error;
+  return data;
+}
+
+async function getSavedIdeas(userId) {
+  const { data, error } = await supabaseClient
+    .from('saved_ideas')
+    .select('*')
+    .eq('user_id', userId)
+    .order('created_at', { ascending: false });
+  if (error) throw error;
+  return data || [];
+}
+
+async function deleteSavedIdea(ideaId) {
+  const { error } = await supabaseClient
+    .from('saved_ideas')
+    .delete()
+    .eq('id', ideaId);
+  if (error) throw error;
+}
+
+//  EXPOSE GLOBALS 
+// FIX: supabase.js is loaded as type="module" so nothing is global by default.
+// app.js and signup.js reference these as globals — we expose them via window.
+
+window.supabaseClient        = supabaseClient;
+window.signUp                = signUp;
+window.signIn                = signIn;
+window.signOut               = signOut;
+window.getCurrentUser        = getCurrentUser;
+window.getProfile            = getProfile;
+window.updateProfile         = updateProfile;
+window.uploadAvatar          = uploadAvatar;
+window.getApprovedTestimonials = getApprovedTestimonials;
+window.submitTestimonial     = submitTestimonial;
+window.getPlatformStats      = getPlatformStats;
+window.incrementIdeasGenerated = incrementIdeasGenerated;
+window.saveIdea              = saveIdea;
+window.getSavedIdeas         = getSavedIdeas;
+window.deleteSavedIdea       = deleteSavedIdea;

@@ -1,31 +1,23 @@
 'use strict';
 
-// ========================================
 // IDEA-ENGNE - LANDING PAGE SCRIPTS
 // Built by Anthony Michael (TonyDev)
-// ========================================
 
-// ========== MOBILE SIDEBAR MENU (ENHANCED) ==========
+// ─── MOBILE SIDEBAR MENU ─────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.querySelector('.hamburger');
   const mobileMenu = document.querySelector('.mobile-menu');
   const body = document.body;
-  
-  // Guard: only proceed if mobile menu elements exist on this page
-  if (!hamburger || !mobileMenu) {
-    return; // This page doesn't have mobile menu structure
-  }
-  
-  // Get backdrop (now in HTML, inside header)
+
+  if (!hamburger || !mobileMenu) return;
+
   let backdrop = document.querySelector('.mobile-menu-backdrop');
   if (!backdrop) {
-    // Fallback: create if doesn't exist
     backdrop = document.createElement('div');
     backdrop.className = 'mobile-menu-backdrop';
     mobileMenu.parentElement.insertBefore(backdrop, mobileMenu.nextSibling);
   }
-  
-  // Create close button in sidebar if it doesn't exist
+
   let closeBtn = mobileMenu.querySelector('.mobile-menu-close');
   if (!closeBtn) {
     closeBtn = document.createElement('button');
@@ -34,157 +26,120 @@ document.addEventListener('DOMContentLoaded', () => {
     closeBtn.setAttribute('aria-label', 'Close menu');
     mobileMenu.insertBefore(closeBtn, mobileMenu.firstChild);
   }
-  
-  // Open menu
+
   function openMenu() {
     hamburger.classList.add('active');
     mobileMenu.classList.add('active');
     backdrop.classList.add('active');
     body.style.overflow = 'hidden';
   }
-  
-  // Close menu
+
   function closeMenu() {
     hamburger.classList.remove('active');
     mobileMenu.classList.remove('active');
     backdrop.classList.remove('active');
     body.style.overflow = '';
   }
-  
-  if (hamburger && mobileMenu) {
-    // Hamburger click
-    hamburger.addEventListener('click', () => {
-      if (mobileMenu.classList.contains('active')) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    });
-    
-    // Close button click
-    closeBtn.addEventListener('click', closeMenu);
-    
-    // Backdrop click
-    backdrop.addEventListener('click', closeMenu);
-    
-    // Close when clicking on links
-    const mobileLinks = mobileMenu.querySelectorAll('a');
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        closeMenu();
-        
-        // Add active class to clicked link
-        mobileLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-      });
-    });
-    
-    // Add icons to nav links if they don't have them
-    const navIcons = {
-      'how-it-works': 'fa-map-signs',
-      'features': 'fa-star',
-      'testimonials': 'fa-comments',
-      'pricing': 'fa-tags',
-      'faq': 'fa-question-circle'
-    };
-    
-    mobileLinks.forEach(link => {
-      const href = link.getAttribute('href');
-      if (href && href.startsWith('#')) {
-        const section = href.substring(1);
-        const iconClass = navIcons[section];
-        if (iconClass && !link.querySelector('i')) {
-          const icon = document.createElement('i');
-          icon.className = `fas ${iconClass}`;
-          link.insertBefore(icon, link.firstChild);
-        }
-      }
-    });
-  }
-  
-  // Close menu on ESC key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) {
+
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.contains('active') ? closeMenu() : openMenu();
+  });
+
+  closeBtn.addEventListener('click', closeMenu);
+  backdrop.addEventListener('click', closeMenu);
+
+  const mobileLinks = mobileMenu.querySelectorAll('a');
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
       closeMenu();
+      mobileLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+
+  const navIcons = {
+    'how-it-works': 'fa-map-signs',
+    'features': 'fa-star',
+    'testimonials': 'fa-comments',
+    'pricing': 'fa-tags',
+    'faq': 'fa-question-circle'
+  };
+
+  mobileLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      const section = href.substring(1);
+      const iconClass = navIcons[section];
+      if (iconClass && !link.querySelector('i')) {
+        const icon = document.createElement('i');
+        icon.className = `fas ${iconClass}`;
+        link.insertBefore(icon, link.firstChild);
+      }
     }
   });
-  
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('active')) closeMenu();
+  });
+
   // Highlight active section on scroll
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.mobile-nav-links a[href^="#"]');
-  
+
   function highlightActiveSection() {
     const scrollY = window.pageYOffset;
-    
     sections.forEach(section => {
       const sectionHeight = section.offsetHeight;
       const sectionTop = section.offsetTop - 100;
       const sectionId = section.getAttribute('id');
-      
       if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
         navLinks.forEach(link => {
           link.classList.remove('active');
-          if (link.getAttribute('href') === `#${sectionId}`) {
-            link.classList.add('active');
-          }
+          if (link.getAttribute('href') === `#${sectionId}`) link.classList.add('active');
         });
       }
     });
   }
-  
+
   window.addEventListener('scroll', highlightActiveSection, { passive: true });
 });
 
-// ========== CHECK USER LOGIN STATUS ==========
+// ─── CHECK USER LOGIN STATUS ──────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   const loggedInUser = localStorage.getItem('ideaEngneUser');
-  const storedData = localStorage.getItem('ideaEngneUserData');
+  const storedData   = localStorage.getItem('ideaEngneUserData');
   let user = null;
-  
+
   if (storedData) {
-    try {
-      user = JSON.parse(storedData);
-    } catch (error) {
-      console.warn('Corrupted user data in localStorage', error);
-    }
+    try { user = JSON.parse(storedData); }
+    catch (error) { console.warn('Corrupted user data in localStorage', error); }
   }
-  
+
   if (loggedInUser && user) {
-    
-    // Update CTA buttons to "Go to Dashboard"
     const ctaTriggers = document.querySelectorAll('.cta-trigger');
     ctaTriggers.forEach(btn => {
       if (btn.textContent.includes('Start') || btn.textContent.includes('Free')) {
         btn.innerHTML = '<i class="fas fa-tachometer-alt"></i> Go to Dashboard';
-        btn.onclick = (e) => {
-          e.preventDefault();
-          window.location.href = 'app.html';
-        };
+        btn.onclick = (e) => { e.preventDefault(); window.location.href = 'app.html'; };
       }
     });
-    
-    // Show user info in mobile sidebar
+
     const mobileMenu = document.querySelector('.mobile-menu');
     if (mobileMenu && !mobileMenu.querySelector('.mobile-user-info')) {
       const userInfo = document.createElement('div');
       userInfo.className = 'mobile-user-info show';
-      
       const initials = user.name
         ? user.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()
         : loggedInUser.charAt(0).toUpperCase() + loggedInUser.split('@')[0].slice(-1).toUpperCase();
-      
       userInfo.innerHTML = `
         <div class="mobile-user-avatar">${initials}</div>
         <div class="mobile-user-text">
           <strong>${user.name || 'User'}</strong>
           <span>${user.subscription === 'free' ? `${user.freeIdeasRemaining || 0} free ideas left` : 'Pro member'}</span>
-        </div>
-      `;
-      
+        </div>`;
       mobileMenu.insertBefore(userInfo, mobileMenu.firstChild);
     }
-    
-    // Update mobile CTA to show dashboard and logout
+
     const mobileCTA = document.querySelector('.mobile-cta');
     if (mobileCTA) {
       mobileCTA.innerHTML = `
@@ -193,13 +148,12 @@ document.addEventListener('DOMContentLoaded', () => {
         </button>
         <button class="btn-outline" onclick="handleLogout()">
           <i class="fas fa-sign-out-alt"></i> Logout
-        </button>
-      `;
+        </button>`;
     }
   }
 });
 
-// Logout handler
+// ─── LOGOUT ───────────────────────────────────────────────────
 function handleLogout() {
   if (confirm('Are you sure you want to logout?')) {
     localStorage.removeItem('ideaEngneUser');
@@ -210,7 +164,7 @@ function handleLogout() {
   }
 }
 
-// ========== HEADER SCROLL EFFECT ==========
+// ─── HEADER SCROLL EFFECT ─────────────────────────────────────
 const header = document.getElementById('site-header');
 if (header) {
   window.addEventListener('scroll', () => {
@@ -218,7 +172,7 @@ if (header) {
   }, { passive: true });
 }
 
-// ========== SCROLL FADE-IN OBSERVER ==========
+// ─── SCROLL FADE-IN OBSERVER ──────────────────────────────────
 const fadeObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -229,12 +183,10 @@ const fadeObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll(
-    '.fade-in, .fade-in-left, .fade-in-right'
-  ).forEach(el => fadeObserver.observe(el));
+  document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => fadeObserver.observe(el));
 });
 
-// ========== TYPING EFFECT ==========
+// ─── TYPING EFFECT ────────────────────────────────────────────
 class TypingEffect {
   constructor(el, words, typeSpeed = 90, deleteSpeed = 45, pause = 2200) {
     this.el = el;
@@ -249,15 +201,12 @@ class TypingEffect {
 
   tick() {
     const word = this.words[this.wordIndex];
-    if (this.isDeleting) {
-      this.text = word.substring(0, this.text.length - 1);
-    } else {
-      this.text = word.substring(0, this.text.length + 1);
-    }
+    this.text = this.isDeleting
+      ? word.substring(0, this.text.length - 1)
+      : word.substring(0, this.text.length + 1);
     this.el.textContent = this.text;
 
     let speed = this.isDeleting ? this.deleteSpeed : this.typeSpeed;
-
     if (!this.isDeleting && this.text === word) {
       speed = this.pause;
       this.isDeleting = true;
@@ -269,34 +218,28 @@ class TypingEffect {
     setTimeout(() => this.tick(), speed);
   }
 
-  start(delay = 600) {
-    setTimeout(() => this.tick(), delay);
-  }
+  start(delay = 600) { setTimeout(() => this.tick(), delay); }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   const typingEl = document.getElementById('typing-hero');
   if (typingEl) {
-    const words = ['Creators', 'Coaches', 'Founders', 'Brands', 'Bloggers', 'Marketers'];
-    new TypingEffect(typingEl, words).start();
+    new TypingEffect(typingEl, ['Creators', 'Coaches', 'Founders', 'Brands', 'Bloggers', 'Marketers']).start();
   }
 });
 
-// ========== ANIMATED COUNTER ==========
+// ─── ANIMATED COUNTER 
 function animateCounter(el, target, duration = 2000) {
-  // Guard against invalid inputs
-  if (!el || typeof target !== 'number' || Number.isNaN(target) || target < 0) {
-    return;
-  }
-  
-  const isLarge = target >= 10000;
+  if (!el || typeof target !== 'number' || Number.isNaN(target) || target < 0) return;
+
+  const isLarge   = target >= 10000;
   const increment = target / (duration / 16);
-  let current = 0;
+  let current     = 0;
 
   const update = () => {
     current = Math.min(current + increment, target);
     if (isLarge) {
-      el.textContent = (current >= 1000)
+      el.textContent = current >= 1000
         ? (current / 1000).toFixed(current >= 100000 ? 0 : 1) + 'K+'
         : Math.floor(current).toLocaleString();
     } else {
@@ -310,8 +253,9 @@ function animateCounter(el, target, duration = 2000) {
 const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      const el = entry.target;
-      animateCounter(el, parseInt(el.dataset.count));
+      const el     = entry.target;
+      const target = parseInt(el.dataset.count);
+      animateCounter(el, target);
       counterObserver.unobserve(el);
     }
   });
@@ -319,50 +263,123 @@ const counterObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
 
-// ========== FAQ ACCORDION ==========
+// ─── DYNAMIC STATS (Supabase) 
+// Fetches real numbers from platform_stats table and updates data-count
+// so the existing animated counter picks them up on scroll.
+
+async function loadDynamicStats() {
+  try {
+    // window.getPlatformStats is exposed by supabase.js
+    if (typeof window.getPlatformStats !== 'function') return;
+
+    const stats = await window.getPlatformStats();
+    if (!stats) return;
+
+    // Map stat fields to the data-count elements in index.html
+    const statMap = [
+      { selector: '[data-count="12000"]', value: stats.total_users            },
+      { selector: '[data-count="500000"]', value: stats.total_ideas_generated },
+      { selector: '[data-count="98"]',    value: stats.satisfaction_percentage }
+    ];
+
+    statMap.forEach(({ selector, value }) => {
+      if (!value) return;
+      const el = document.querySelector(selector);
+      if (!el) return;
+      // Update data-count so counterObserver uses real value
+      el.dataset.count = value;
+      // If element is already visible (observer already fired), update text directly
+      if (el.textContent !== '0') animateCounter(el, value);
+    });
+
+  } catch (err) {
+    console.warn('Dynamic stats load failed — using hardcoded values:', err.message);
+    // Graceful fallback: hardcoded values in HTML remain visible
+  }
+}
+
+// ─── DYNAMIC TESTIMONIALS (Supabase) 
+// Fetches approved testimonials and replaces static cards in the grid.
+// If DB has no approved rows, static cards remain untouched.
+
+async function loadDynamicTestimonials() {
+  try {
+    if (typeof window.getApprovedTestimonials !== 'function') return;
+
+    const testimonials = await window.getApprovedTestimonials();
+    if (!testimonials || testimonials.length === 0) return; // Keep static cards
+
+    const grid = document.querySelector('.testimonials-grid');
+    if (!grid) return;
+
+    const staggerClasses = ['stagger-1', 'stagger-2', 'stagger-3'];
+
+    grid.innerHTML = testimonials.map((t, i) => {
+      const rating   = Math.min(5, Math.max(1, t.rating || 5));
+      const stagger  = staggerClasses[i % 3];
+      const stars    = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+      const ariaLabel = `${rating} out of 5 stars`;
+
+      return `
+        <article class="testimonial-card fade-in ${stagger}">
+          <div class="testimonial-stars" aria-label="${ariaLabel}">${stars}</div>
+          <p class="testimonial-text">"${escapeHtmlLanding(t.message)}"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true"
+                 style="width:45px;height:45px;border-radius:50%;background:var(--primary);
+                        display:flex;align-items:center;justify-content:center;
+                        color:#fff;font-weight:700;font-size:1.4rem;flex-shrink:0;">
+              ${(t.name || 'U').charAt(0).toUpperCase()}
+            </div>
+            <div class="author-info">
+              <strong>${escapeHtmlLanding(t.name || 'Anonymous')}</strong>
+              <span>Verified Creator</span>
+            </div>
+            <i class="fas fa-check-circle verified-badge" title="Verified creator" aria-label="Verified"></i>
+          </div>
+        </article>`;
+    }).join('');
+
+    // Re-observe new cards for fade-in animation
+    grid.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+  } catch (err) {
+    console.warn('Dynamic testimonials load failed — using static cards:', err.message);
+  }
+}
+
+function escapeHtmlLanding(text) {
+  const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+  return String(text).replace(/[&<>"']/g, m => map[m]);
+}
+
+// ─── FAQ ACCORDION 
 document.querySelectorAll('.faq-question').forEach(btn => {
   btn.addEventListener('click', () => {
-    const item = btn.closest('.faq-item');
+    const item   = btn.closest('.faq-item');
     const isOpen = item.classList.contains('open');
-
-    // Close all
     document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-
-    // Toggle current
     if (!isOpen) item.classList.add('open');
   });
 });
 
-// ========== CTA MODAL (UPDATED) ==========
+// ─── CTA MODAL 
 class CTAModal {
   constructor() {
     this.modal = document.getElementById('ctaModal');
-    this.form = document.getElementById('ctaModalForm');
-    this.successEl = document.getElementById('modalSuccess');
-    this.submitBtn = document.getElementById('modalSubmitBtn');
     this.init();
   }
 
   init() {
-    // Check if user is already logged in
     const loggedInUser = localStorage.getItem('ideaEngneUser');
-    
-    // Open triggers
+
     document.querySelectorAll('.cta-trigger').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
-        
-        // If user is logged in, go to dashboard
-        if (loggedInUser) {
-          window.location.href = 'app.html';
-        } else {
-          // Otherwise, go to signup
-          window.location.href = 'signup.html';
-        }
+        window.location.href = loggedInUser ? 'app.html' : 'signup.html';
       });
     });
 
-    // CTA section email input → redirect to signup with pre-filled email
     const ctaEmailMain = document.getElementById('ctaEmailMain');
     if (ctaEmailMain) {
       ctaEmailMain.addEventListener('keydown', (e) => {
@@ -374,11 +391,9 @@ class CTAModal {
       });
     }
 
-    // Close triggers (if modal exists)
     if (this.modal) {
       this.modal.querySelector('.modal-close')?.addEventListener('click', () => this.close());
       this.modal.querySelector('.cta-modal-overlay')?.addEventListener('click', () => this.close());
-
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && this.modal.classList.contains('active')) this.close();
       });
@@ -393,11 +408,7 @@ class CTAModal {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  new CTAModal();
-});
-
-// ========== SMOOTH SCROLL (NAV) ==========
+// ─── SMOOTH SCROLL 
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', (e) => {
     const target = document.querySelector(link.getAttribute('href'));
@@ -408,7 +419,17 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
-// ========== CONSOLE BRANDING ==========
-console.log('%c⚡ Idea-Engne', 'font-size:22px;font-weight:900;color:#4f39f6;');
-console.log('%cBuilt by Anthony Michael (TonyDev)', 'font-size:14px;color:#22D3EE;font-weight:600;');
+// ─── INIT 
+document.addEventListener('DOMContentLoaded', () => {
+  new CTAModal();
+
+  // Load dynamic data from Supabase
+  // Small delay ensures supabase.js module has fully executed
+  setTimeout(() => {
+    loadDynamicStats();
+    loadDynamicTestimonials();
+  }, 300);
+});
+
+console.log('%c⚡ Idea-Engne', 'font-size:18px;font-weight:700;color:#4f39f6;');
 console.log('%c→ GitHub: github.com/TonytheDev01', 'font-size:13px;color:#666;');

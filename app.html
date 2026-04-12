@@ -6,9 +6,9 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="modals.css">
 </head>
 <body>
-    <!-- Header -->
 <header>
   <div class="header-inner">
     <a href="index.html" class="brand">
@@ -300,13 +300,13 @@
 
       <button type="submit" class="btn-generate" id="generateBtn">
         <i class="fas fa-magic"></i>
-        Generate 10 Ideas
+        Generate 15 Ideas
       </button>
     </form>
 
     <div class="quota-info">
       <strong><i class="fas fa-gift"></i> Free Tier</strong>
-      <p>You get 10 AI-generated content ideas for free. Upgrade to Creator plan for unlimited generations.</p>
+      <p>You get 15 AI-generated content ideas for free. Upgrade to Creator plan for unlimited generations.</p>
     </div>
   </div>
 
@@ -364,10 +364,76 @@
   <span id="toastMessage">Copied!</span>
 </div>
 
+
+<!-- ── REVIEW MODAL  -->
+<div class="ie-modal-backdrop hidden" id="reviewModal" role="dialog" aria-modal="true" aria-labelledby="reviewModalTitle">
+  <div class="ie-modal ie-review-modal">
+
+    <button class="ie-modal-close" id="closeReviewModal" aria-label="Close">
+      <i class="fas fa-times"></i>
+    </button>
+
+    <div class="ie-review-header">
+      <div class="ie-review-emoji">⚡</div>
+      <h3 id="reviewModalTitle">How's Idea-Engne working for you?</h3>
+      <p>Your feedback helps us improve, takes less than 30 seconds.</p>
+    </div>
+
+    <div class="ie-star-row">
+      <div class="ie-star-rating" id="starRating" role="group" aria-label="Star rating">
+        <span data-value="1" role="radio" aria-label="1 star" tabindex="0">☆</span>
+        <span data-value="2" role="radio" aria-label="2 stars" tabindex="0">☆</span>
+        <span data-value="3" role="radio" aria-label="3 stars" tabindex="0">☆</span>
+        <span data-value="4" role="radio" aria-label="4 stars" tabindex="0">☆</span>
+        <span data-value="5" role="radio" aria-label="5 stars" tabindex="0">☆</span>
+      </div>
+      <span class="ie-star-label" id="starLabel"></span>
+    </div>
+
+    <div class="ie-review-field">
+      <label for="reviewText">What do you love? <span class="ie-optional">(optional)</span></label>
+      <textarea id="reviewText" placeholder="e.g. The ideas are super specific to my niche and saved me hours every week…" rows="3" maxlength="300"></textarea>
+      <div class="ie-char-count"><span id="charCount">0</span>/300</div>
+    </div>
+
+    <div class="ie-review-actions">
+      <button class="ie-btn-submit" id="submitReviewBtn">
+        <i class="fas fa-paper-plane"></i> Submit Review
+      </button>
+      <button class="ie-btn-skip" id="skipReviewBtn">Maybe later</button>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ── SAVED IDEAS MODAL -->
+<div class="ie-modal-backdrop hidden" id="savedIdeasModal" role="dialog" aria-modal="true" aria-labelledby="savedModalTitle">
+  <div class="ie-modal ie-saved-modal">
+
+    <div class="ie-modal-header">
+      <h3 id="savedModalTitle"><i class="fas fa-bookmark"></i> Saved Ideas</h3>
+      <div class="ie-modal-header-actions">
+        <button class="ie-btn-clear" id="clearAllSavedBtn">
+          <i class="fas fa-trash"></i> Clear All
+        </button>
+        <button class="ie-modal-close" id="closeSavedModal" aria-label="Close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="ie-saved-list" id="savedIdeasList">
+    </div>
+
+  </div>
+</div>
+
 <!-- Load config first, then app -->
+<script src="config.js"></script>                              
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="config.js"></script>
-<script src="supabase.js"></script>
+<script src="supabase.js" type="module"></script>
 <script src="app.js"></script>
+
 </body>
 </html>
